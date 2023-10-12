@@ -1,4 +1,4 @@
-package com.course.project.macrunyi_xiaoran_xue.cnfg;
+package com.course.project.macrunyi_xiaoran_xue.cfg;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -7,11 +7,10 @@ import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
-import org.springframework.stereotype.Component;
 
 @Configuration
 @EnableRabbit
-public class RabbitCnfg {
+public class RabbitCfg {
 
     public static final String QUEUE_NAME = "queue_test";
     public static final String EXCHANGE_NAME = "exchange_test";

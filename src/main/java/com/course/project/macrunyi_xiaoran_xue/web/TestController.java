@@ -1,6 +1,7 @@
 package com.course.project.macrunyi_xiaoran_xue.web;
 
-import com.course.project.macrunyi_xiaoran_xue.mq.producer.TestSender;
+import com.course.project.macrunyi_xiaoran_xue.domain.event.producer.TestProducer;
+import com.course.project.macrunyi_xiaoran_xue.web.resp.Response;
 import jakarta.annotation.Resource;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @Resource
-    private TestSender testSender;
+    private TestProducer testSender;
 
     @GetMapping("sendMsg")
-    public String sendMsg(@RequestParam(required = true) String content) {
+    public Response sendMsg(@RequestParam(required = true) String content) {
         testSender.sender(content);
-        return "success, msg sent to mq";
+        return new Response().success("send success");
     }
 
     @RequestMapping("")
