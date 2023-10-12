@@ -2,7 +2,7 @@ package com.course.project.macrunyi_xiaoran_xue.cfg;
 
 public enum CfgEnum {
 
-    USER_REGISTER("user_register_queue", "user_register_exchange", "user_register_routing"),
+    USER_REGISTER("user_register_queue", "exchange_test", "user_register_routing"),
     ;
 
     private String QUEUE_NAME;

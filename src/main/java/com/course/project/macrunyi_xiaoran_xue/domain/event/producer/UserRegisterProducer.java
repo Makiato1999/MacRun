@@ -18,6 +18,6 @@ public class UserRegisterProducer {
     }
 
     public void sender(Object msg) {
-        rabbitTemplate.convertAndSend(CfgEnum.USER_REGISTER.getQUEUE_NAME(), CfgEnum.USER_REGISTER.getROUTING_NAME(), msg);
+        rabbitTemplate.convertAndSend(CfgEnum.USER_REGISTER.getEXCHANGE_NAME(), CfgEnum.USER_REGISTER.getROUTING_NAME(), msg);
     }
 }

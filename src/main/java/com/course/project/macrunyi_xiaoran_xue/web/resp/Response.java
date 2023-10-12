@@ -1,39 +1,50 @@
 package com.course.project.macrunyi_xiaoran_xue.web.resp;
 
+import lombok.Data;
+
 import java.io.Serializable;
-import java.util.Map;
 
+@Data
 public class Response<T> implements Serializable {
-    private boolean success;
-    private T data;
-    private String code;
+    private static final long serialVersionUID = 9191113464599235349L;
+    private int code;
     private String msg;
+    private T data;
 
-    public Response(boolean success, String code, String msg, T data) {
-        this.success = success;
-        this.code = code;
-        this.msg = msg;
+    public Response() {
+
+    }
+
+    public Response(RESPENUM code, T data) {
+        this.code = code.getCode();
+        this.msg = code.getDesc();
         this.data = data;
     }
 
-    public Response() {
-    }
-
-    public Response(boolean success, String code) {
-        this.success = success;
+    public Response(int code, String message, T data) {
         this.code = code;
+        this.msg = message;
+        this.data = data;
     }
 
-    public Response success(T data) {
-        return new Response(Boolean.TRUE, RESPENUM.SUCCESS.getCode().toString(), RESPENUM.SUCCESS.getDesc(), data);
+    public void setResponseCode(RESPENUM code) {
+        this.code = code.getCode();
+        this.msg = code.getDesc();
     }
 
-    public Response serverFail() {
-        return new Response(Boolean.FALSE, RESPENUM.INTERNAL_ERR.getCode().toString(),
-                RESPENUM.INTERNAL_ERR.getDesc(), null);
+    public static <T> Response<T> success(T data) {
+        return success(data, "");
     }
 
-    public static Response fail(RESPENUM respenum) {
-        return new Response(Boolean.FALSE, respenum.getCode().toString(), respenum.getDesc(), null);
+    public static <T> Response<T> success(String msg) {
+        return success(null, msg);
+    }
+
+    public static <T> Response<T> success(T data, String msg) {
+        return new Response<>(RESPENUM.SUCCESS.getCode(), msg, data);
+    }
+
+    public static <T> Response<T> fail(String message) {
+        return new Response<>(RESPENUM.INTERNAL_ERR.getCode(), message, null);
     }
 }
