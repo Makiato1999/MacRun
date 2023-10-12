@@ -10,6 +10,7 @@ public class UserRepository {
 
     public UserEntity addNewUser(String userEmail, String userName) {
         //todo insert to database
-        return new UserEntity(new Random().nextLong(), "userName", "test@mcmaster.ca");
+        return new UserEntity(new Random().nextLong(), "userName", "test@mcmaster.ca",
+                "123.45", "678.90");
     }
 }

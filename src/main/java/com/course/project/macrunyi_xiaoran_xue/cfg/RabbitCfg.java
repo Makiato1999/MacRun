@@ -16,6 +16,10 @@ public class RabbitCfg {
     public static final String EXCHANGE_NAME = "exchange_test";
     public static final String ROUTING_KEY = "yi_test_routing";
 
+    public static final String QUEUE_NAME_USER_REGISTER = "user_register_queue";
+    public static final String EXCHANGE_NAME_USER_REGISTER = "exchange_test";
+    public static final String ROUTING_KEY_USER_REGISTER = "user_register_routing";
+
     // https://stackoverflow.com/a/59970323
     @Bean
     public Jackson2JsonMessageConverter converter(Jackson2ObjectMapperBuilder builder) {

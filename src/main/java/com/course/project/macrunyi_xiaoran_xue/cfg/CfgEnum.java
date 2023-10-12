@@ -5,9 +5,9 @@ public enum CfgEnum {
     USER_REGISTER("user_register_queue", "exchange_test", "user_register_routing"),
     ;
 
-    private String QUEUE_NAME;
-    private String EXCHANGE_NAME;
-    private String ROUTING_NAME;
+    public String QUEUE_NAME;
+    public String EXCHANGE_NAME;
+    public String ROUTING_NAME;
 
     CfgEnum(String QUEUE_NAME, String EXCHANGE_NAME, String ROUTING_NAME) {
         this.QUEUE_NAME = QUEUE_NAME;
