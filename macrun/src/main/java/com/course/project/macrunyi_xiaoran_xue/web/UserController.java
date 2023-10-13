@@ -5,7 +5,6 @@ import com.course.project.macrunyi_xiaoran_xue.domain.entity.UserEntity;
 import com.course.project.macrunyi_xiaoran_xue.web.resp.Response;
 import jakarta.annotation.Resource;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
