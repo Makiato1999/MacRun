@@ -1,8 +1,8 @@
 services:
 
-  biometric-srv:
-    container_name: test
-    build: ../macrun/src
+  macrun:
+    container_name: macrun
+    build: ../macrun
     environment:
       - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka
       - spring.rabbitmq.host=rabbit-mq

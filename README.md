@@ -15,7 +15,15 @@
 ## Deploying your container to Dockerhub
 
 
-1. Run `docker-compose build` to build the images.
+1. Go to https://hub.docker.com/signup and sign up for an account, if you haven't already. I suggest
+      using the same username as your GitHub account for simplicity. In the rest of these steps, replace
+      all references to `myuser` with your actual DockerHub username.
+2. Inside the `docker-compose.yml` file, add a new line to each of the three services, in the following
+   format:
+   ```yml
+   image: myuser/servicename
+   ```
+3. Run `docker-compose build` to build the images.
 2. Run `docker login` to log into your DockerHub account.
 3. Run `docker-compose push` to push your images to your DockerHub account.
 4. Log into your DockerHub account. You should see the new image repositories.
