@@ -1,6 +1,6 @@
 # Build and Deploy the Docker Image
 ## Build the Docker Image
-1. From the main lab directory, run the following command:
+1. From the main directory, run the following command:
    ```bash
    mvn package -Dskiptests
    ```
