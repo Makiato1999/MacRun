@@ -31,4 +31,5 @@
    the DockerHub ones. First, go into Docker Desktop, click Containers, and delete the containers.
 6. Then, go into the Images, and delete all the images by first pressing "Clean up...'
 7. Finally, inside the `deployment` folder, run `docker-compose -f docker-compose-prod.yml up`. The images should be downloaded and will start running!
+8. Go to Postman and create GET/Post request with the link `http://localhost:8080/user/register?email=user@email.com&userName=user`, you can see the request is successful!
 
