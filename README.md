@@ -1,11 +1,12 @@
 # Build and Deploy the Docker Image
 ## Build the Docker Image
-1. From the main directory, run the following command:
+1. Clone the GitHub repo onto your computer.
+2. From the main directory, run the following command:
    ```bash
    mvn package -Dskiptests
    ```
    This will build jars of our services.
-2. Next, we'll go into the `deployment` directory and start our Docker containers.
+3. Next, we'll go into the `deployment` directory and start our Docker containers.
    ```bash
    cd deployment
    docker-compose up
@@ -15,8 +16,7 @@
 ## Deploying your container to Dockerhub
 
 
-1. Go to https://hub.docker.com/signup and sign up for an account, if you haven't already. I suggest
-      using the same username as your GitHub account for simplicity. In the rest of these steps, replace
+1. Clone the GitHub repo onto your computer. Go to https://hub.docker.com/signup and sign up. In the rest of these steps, replace
       all references to `myuser` with your actual DockerHub username.
 2. Inside the `docker-compose.yml` file, add a new line to each of the three services, in the following
    format:
