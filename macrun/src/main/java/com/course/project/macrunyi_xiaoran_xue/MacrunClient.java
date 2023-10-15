@@ -43,8 +43,8 @@ public class MacrunClient {
     }
 
     private WebClient buildClient() {
-        String url = "http://localhost:8761/eureka/";
-        //String url = locateExternalService();
+        //String url = "http://localhost:8761/eureka/";
+        String url = locateExternalService();
         log.info("** Using instance: " + url);
         return WebClient.builder()
                 .baseUrl(url)
