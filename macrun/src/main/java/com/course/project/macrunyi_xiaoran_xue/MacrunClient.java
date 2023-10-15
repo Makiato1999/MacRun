@@ -1,18 +1,4 @@
 package com.course.project.macrunyi_xiaoran_xue;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-@RequestMapping("/a")
-public class MacrunClient {
-    @RequestMapping("/b")
-    public String hello(String name) {
-        return "Hello World!" + name;
-    }
-}
-/*
-package com.course.project.macrunyi_xiaoran_xue;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Application;
@@ -32,7 +18,8 @@ import java.util.Random;
 public class MacrunClient {
     private final RabbitTemplate rabbitTemplate;
     private static final String ENDPOINT = "v1/macrun";
-    private static final String APP_NAME = "EUREKA-REGISTRY";
+    private static final String APP_NAME = "eureka-registry";
+
 
     //Eureka client to look up services
     private final EurekaClient registry;
@@ -56,7 +43,8 @@ public class MacrunClient {
     }
 
     private WebClient buildClient() {
-        String url = locateExternalService();
+        String url = "http://localhost:8761/eureka/";
+        //String url = locateExternalService();
         log.info("** Using instance: " + url);
         return WebClient.builder()
                 .baseUrl(url)
@@ -64,4 +52,3 @@ public class MacrunClient {
                 .build();
     }
 }
-*/
