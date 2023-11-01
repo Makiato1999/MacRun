@@ -1,8 +1,10 @@
 HELP.md
 target/
 !.mvn/wrapper/maven-wrapper.jar
-!macrun/src/main/**/target/
-!macrun/src/test/**/target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+mvnw.cmd
+mvnw
 
 ### STS ###
 .apt_generated
@@ -26,12 +28,8 @@ target/
 /nbdist/
 /.nb-gradle/
 build/
-!macrun/src/main/**/build/
-!macrun/src/test/**/build/
+!**/src/main/**/build/
+!**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
-mvnw
-mvnw.cmd
-.mvn
-deployment

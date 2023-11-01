@@ -1,8 +1,8 @@
-package com.course.project.macrunyi_xiaoran_xue.web;
+package com.course.project.useropt.adapers;
 
-import com.course.project.macrunyi_xiaoran_xue.domain.command.UserCrudService;
-import com.course.project.macrunyi_xiaoran_xue.domain.entity.UserEntity;
-import com.course.project.macrunyi_xiaoran_xue.web.resp.Response;
+import com.course.project.useropt.port.UserCrudService;
+import com.course.project.useropt.business.entities.UserEntity;
+import com.course.project.useropt.adapers.resp.Response;
 import jakarta.annotation.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;

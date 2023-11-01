@@ -23,6 +23,8 @@
 <!--        <module>eureka-tech</module>-->
         <module>macrun</module>
         <module>discovery-server</module>
+        <module>user-opt</module>
     </modules>
+
 
 </project>

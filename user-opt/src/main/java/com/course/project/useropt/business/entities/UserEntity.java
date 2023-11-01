@@ -1,10 +1,10 @@
-package com.course.project.macrunyi_xiaoran_xue.domain.entity;
+package com.course.project.useropt.business.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 
@@ -13,6 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class UserEntity implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 8427779040804874577L;
 
     private Long userId;

@@ -1,4 +1,4 @@
-package com.course.project.macrunyi_xiaoran_xue.cfg;
+package com.course.project.useropt.cfg;
 
 import lombok.Getter;
 
