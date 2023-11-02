@@ -1,0 +1,16 @@
+server:
+port: 9091
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: heartrate-monitor-service
+  rabbitmq:
+    port: 5672
+    virtual-host: vhost
+    host: localhost
+    username: guest
+    password: guest
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
