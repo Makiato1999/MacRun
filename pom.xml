@@ -24,7 +24,7 @@
         <module>macrun</module>
         <module>discovery-server</module>
         <module>user-opt</module>
-        <module>trail_center</module>
+
         <module>game-center</module>
     </modules>
 
