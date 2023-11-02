@@ -7,9 +7,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 public class RabbitConfiguration {
-    public static final String EXCHANGE_NAME = "biometric-exchange";
-
-    public static final String ROUTING_KEY = "biometric.heartrate.update";
+    public static final String EXCHANGE_NAME = "exchange_test";
+    public static final String ROUTING_KEY = "yingxue_test_routing";
+//    public static final String EXCHANGE_NAME = "biometric-exchange";
+//
+//    public static final String ROUTING_KEY = "biometric.heartrate.update";
 
     // https://stackoverflow.com/a/59970323
     @Bean

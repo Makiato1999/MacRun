@@ -8,6 +8,7 @@ import com.course.project.heartratemonitor.dto.CreateWorkoutRequest;
 import com.course.project.heartratemonitor.dto.EndWorkoutRequest;
 import com.course.project.heartratemonitor.ports.BiometricService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -35,7 +36,7 @@ public class BiometricClient implements BiometricService {
     }
 
     private WebClient buildClient() {
-        String link = "http://localhost:9091";
+        String link = "http://localhost:8082";
         log.info("** Using instance: " + link);
         return WebClient.builder()
                 .baseUrl(link)
@@ -50,6 +51,7 @@ public class BiometricClient implements BiometricService {
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
                 RabbitConfiguration.ROUTING_KEY, heartrateRecord);
     }
+
 
     @Override
     public Workout createWorkout(String username) {
@@ -91,3 +93,4 @@ public class BiometricClient implements BiometricService {
     }
 
 }
+

@@ -2,7 +2,7 @@ package com.course.project.macrunyi_xiaoran_xue.domain.event.listener;
 
 import com.course.project.macrunyi_xiaoran_xue.cfg.RabbitCfg;
 import com.course.project.macrunyi_xiaoran_xue.domain.command.TrailService;
-import com.course.project.macrunyi_xiaoran_xue.domain.entity.UserEntity;
+import com.course.project.useropt.business.entities.UserEntity;
 import com.rabbitmq.client.Channel;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
