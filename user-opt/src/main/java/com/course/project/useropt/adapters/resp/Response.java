@@ -1,4 +1,4 @@
-package com.course.project.useropt.adapers.resp;
+package com.course.project.useropt.adapters.resp;
 
 import lombok.Data;
 
