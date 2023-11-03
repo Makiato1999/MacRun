@@ -7,8 +7,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 public class RabbitConfiguration {
-    public static final String EXCHANGE_NAME = "hrm_test";
-    public static final String ROUTING_KEY = "hrm_routing";
+
+    public static final String QUEUE_NAME = "hrm_test";
+    public static final String EXCHANGE_NAME = "hrm_exchange";
+    public static final String ROUTING_KEY = "hrm_route";
+
+//    public static final String EXCHANGE_NAME = "";
+//    public static final String ROUTING_KEY = "";
     // https://stackoverflow.com/a/59970323
     @Bean
     public Jackson2JsonMessageConverter converter(Jackson2ObjectMapperBuilder builder) {

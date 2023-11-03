@@ -36,7 +36,8 @@ public class HeartrateMonitorManager {
         Integer heartrate = generateNextHeartrate();
 
         log.info("Sending heartrate: " + heartrate + "bpm");
-        biometricService.sendHeartrate(heartrateRecord.getId(), heartrateRecord.getLongitude(), heartrateRecord.getLatitude(), heartrate);
+//        biometricService.sendHeartrate(heartrateRecord.getId(), heartrateRecord.getLongitude(), heartrateRecord.getLatitude(), heartrate);
+        biometricService.sendHeartrate(new Random().nextLong(), new Random().nextLong(),new Random().nextLong(), heartrate);
 
     }
 

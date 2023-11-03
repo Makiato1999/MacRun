@@ -4,6 +4,7 @@ package com.course.project.heartratemonitor.business.entities;
 import jakarta.persistence.Id;
 import lombok.*;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -12,6 +13,9 @@ import java.util.Objects;
 @Getter @Setter
 @ToString
 public class HeartrateRecord implements Serializable {
+
+//    @Serial
+//    private static final long serialVersionUID = 3831404271622369215L;
 
     private @Id Long userId;
     private Long longitude;

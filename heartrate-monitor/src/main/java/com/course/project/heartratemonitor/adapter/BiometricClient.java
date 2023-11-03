@@ -7,6 +7,7 @@ import com.course.project.heartratemonitor.business.entities.HeartrateRecord;
 //import com.course.project.heartratemonitor.business.entities.Workout;
 //import com.course.project.heartratemonitor.dto.CreateWorkoutRequest;
 //import com.course.project.heartratemonitor.dto.EndWorkoutRequest;
+import com.course.project.heartratemonitor.dto.CreateWorkoutRequest;
 import com.course.project.heartratemonitor.ports.BiometricService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
@@ -45,35 +46,34 @@ public class BiometricClient implements BiometricService {
                 .build();
     }
 
-//    @Override
+    @Override
     public void sendHeartrate(Long workoutId, Long Longitude, Long Latitude, Integer heartrate) {
         HeartrateRecord heartrateRecord = new HeartrateRecord(workoutId, Longitude, Latitude, heartrate);
 //        Workout workout = new Workout(workoutId, Longitude, Latitude, heartrate);
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
-                RabbitConfiguration.ROUTING_KEY, heartrateRecord);
+                RabbitConfiguration.ROUTING_KEY, "heartrateRecord");
     }
 
     @Override
     public HeartrateRecord createHeartrateRecord(Long userID) {
-        //TODO: random long and lati
-        return new HeartrateRecord(userID, (long) 231.332, (long) 111.22, 0);
+        Random random = new Random();
+        Long randomLat = -90 + (90 - (-90)) * random.nextLong();
+        Long randomLong = -180 + (180 - (-180)) * random.nextLong();
+
+        return new HeartrateRecord(userID, randomLat, randomLong, 80);
     }
 
     //    @Override
-//    public Workout createWorkout(int id) {
-////        private Long userId;
-////        private Long longitude;
-////        private Long latitude;
-////        private Integer heartRate;
-//        CreateWorkoutRequest createWorkoutRequest = new CreateWorkoutRequest();
-//        Workout workoutResponse;
+//    public HeartrateRecord createHeartrateRecord(Long id) {
+//        CreateWorkoutRequest createWorkoutRequest = new CreateWorkoutRequest(id, (long) 231.332, (long) 111.22, 0);
+//        HeartrateRecord workoutResponse;
 //        try {
 //            WebClient webClient = buildClient();
 //            workoutResponse =
 //                    webClient.post()
 //                            .uri(ENDPOINT)
 //                            .body(BodyInserters.fromValue(createWorkoutRequest))
-//                            .retrieve().bodyToMono(Workout.class).block();
+//                            .retrieve().bodyToMono(HeartrateRecord.class).block();
 //            return workoutResponse;
 //        } catch (IllegalStateException ex) {
 //            log.error("No biometic service available!");
