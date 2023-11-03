@@ -1,6 +1,9 @@
 package com.course.project.challengecenter.adapter;
 
 import com.course.project.challengecenter.RabbitConfiguration;
+import com.course.project.challengecenter.business.entity.Badges;
+import com.course.project.challengecenter.business.entity.Profile;
+import com.course.project.challengecenter.dto.ScoreReq;
 import com.course.project.challengecenter.port.ProfileService;
 import com.course.project.gamecenter.business.entity.GameAttachDataEntity;
 import com.course.project.useropt.business.entities.UserEntity;
@@ -26,18 +29,19 @@ public class ScoreListener {
                     exchange = @Exchange(value = RabbitConfiguration.EXCHANGE_NAME_SCORE, ignoreDeclarationExceptions = "true"),
                     key = RabbitConfiguration.ROUTING_KEY_SCORE))
     // get other info to generate profile/badges?
-    public void receiveMsg(GameAttachDataEntity payload, Channel channel,
+    public void receiveMsg(ScoreReq payload, Channel channel,
                            @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
         log.info("receive message: '" + payload + "'");
         if (payload == null) {
             return;
         }
 
+        Badges badges = profileService.genereateBadges(payload);
+        Profile profile = profileService.genereateProfile(payload);
+        log.info("you get this badges: '" + badges + "'");
+        log.info("profile: '" + profile + "'");
 
-//    ) {
-//        log.info("receive score: ");
 
-//        profileService
     }
 
 }

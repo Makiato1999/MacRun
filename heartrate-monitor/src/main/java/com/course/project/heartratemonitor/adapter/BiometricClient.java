@@ -51,7 +51,7 @@ public class BiometricClient implements BiometricService {
         HeartrateRecord heartrateRecord = new HeartrateRecord(workoutId, Longitude, Latitude, heartrate);
 //        Workout workout = new Workout(workoutId, Longitude, Latitude, heartrate);
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
-                RabbitConfiguration.ROUTING_KEY, "heartrateRecord");
+                RabbitConfiguration.ROUTING_KEY, heartrateRecord);
     }
 
     @Override
