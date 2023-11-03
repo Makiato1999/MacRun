@@ -5,7 +5,7 @@ spring:
         name: listener-service
     rabbitmq:
         port: 5672
-        virtual-host: vhost
-        host: localhost
+#        virtual-host: vhost
+        host: 127.0.0.1
         username: guest
         password: guest
