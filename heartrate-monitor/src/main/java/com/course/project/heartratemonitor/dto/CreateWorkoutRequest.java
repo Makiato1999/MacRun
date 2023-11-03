@@ -10,5 +10,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateWorkoutRequest {
-    private String username;
+    private Long userId;
+    private Long longitude;
+    private Long latitude;
+    private Integer heartRate;
 }

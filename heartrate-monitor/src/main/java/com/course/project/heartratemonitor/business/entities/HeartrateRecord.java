@@ -1,31 +1,32 @@
 package com.course.project.heartratemonitor.business.entities;
 
 
+import jakarta.persistence.Id;
 import lombok.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-@NoArgsConstructor @RequiredArgsConstructor
+@NoArgsConstructor //@RequiredArgsConstructor
 @Getter @Setter
 @ToString
-public class HeartrateRecord {
+public class HeartrateRecord implements Serializable {
 
-    private @NonNull Long workoutId;
-    private @NonNull LocalDateTime dateTime; // date and time of the heart rate record
-    private @NonNull Integer heartrate;
+    private @Id Long userId;
+    private Long longitude;
+    private Long latitude;
+    private Integer heartRate;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        HeartrateRecord record = (HeartrateRecord) o;
-        return Objects.equals(dateTime, record.dateTime) && heartrate.equals(record.heartrate);
+    public HeartrateRecord(Long userId, Long longitude, Long latitude, Integer heartrate) {
+        this.heartRate=heartrate;
+        this.longitude=longitude;
+        this.latitude=latitude;
+        this.userId=userId;
+
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(dateTime, heartrate);
+    public Long getId() {
+        return this.userId;
     }
-
 }

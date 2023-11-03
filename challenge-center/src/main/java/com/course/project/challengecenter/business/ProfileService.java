@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-public class ListeningService {
+public class ProfileService {
     private final RabbitTemplate rabbitTemplate;
 
-    public ListeningService(RabbitTemplate rabbitTemplate) {
+    public ProfileService(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 }

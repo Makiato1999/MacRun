@@ -1,5 +1,6 @@
 package com.course.project.heartratemonitor.business;
-import com.course.project.heartratemonitor.business.entities.Workout;
+import com.course.project.heartratemonitor.business.entities.HeartrateRecord;
+//import com.course.project.heartratemonitor.business.entities.Workout;
 import com.course.project.heartratemonitor.ports.BiometricService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -12,7 +13,9 @@ import java.util.Random;
 @Slf4j
 public class HeartrateMonitorManager {
     BiometricService biometricService;
-    Workout workout;
+
+    HeartrateRecord heartrateRecord;
+//    Workout workout;
     Integer lastHeartrate = 72;
     private static final Integer MIN_HR = 60;  // minimum heartrate
     private static final Integer MAX_HR = 200; // maximum heartrate
@@ -22,8 +25,9 @@ public class HeartrateMonitorManager {
     public HeartrateMonitorManager(BiometricService biometricService) {
         this.biometricService = biometricService;
 
+        this.heartrateRecord = biometricService.createHeartrateRecord(new Random().nextLong());
         // register a new workout
-        this.workout = biometricService.createWorkout("Chris");
+//        this.workout = biometricService.createWorkout(0);
     }
 
     @Scheduled(fixedRate=1000) // https://stackoverflow.com/a/36542208
@@ -32,7 +36,7 @@ public class HeartrateMonitorManager {
         Integer heartrate = generateNextHeartrate();
 
         log.info("Sending heartrate: " + heartrate + "bpm");
-        biometricService.sendHeartrate(workout.getId(), LocalDateTime.now(), heartrate);
+        biometricService.sendHeartrate(heartrateRecord.getId(), heartrateRecord.getLongitude(), heartrateRecord.getLatitude(), heartrate);
 
     }
 

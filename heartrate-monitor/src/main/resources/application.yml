@@ -6,7 +6,6 @@ spring:
   application:
     name: heartrate-monitor-service
   rabbitmq:
-
     port: 5672
     virtual-host: vhost
     host: localhost

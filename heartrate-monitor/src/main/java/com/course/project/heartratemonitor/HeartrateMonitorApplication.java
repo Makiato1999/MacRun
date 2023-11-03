@@ -9,8 +9,7 @@ import org.springframework.context.annotation.Bean;
 import java.util.Collections;
 
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
-@EnableScheduling
-
+//@EnableScheduling
 public class HeartrateMonitorApplication {
 
     public static void main(String[] args) {
