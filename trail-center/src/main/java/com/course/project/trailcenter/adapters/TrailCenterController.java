@@ -3,6 +3,7 @@ package com.course.project.trailcenter.adapters;
 import com.course.project.trailcenter.business.TrailCenterManager;
 import com.course.project.trailcenter.business.entities.TrailEntity;
 import com.course.project.trailcenter.dto.CreateTrailRequest;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class TrailCenterController {
     private static final String ENDPOINT = "/trail";
 
+    @Resource
     private final TrailCenterManager manager;
 
     @Autowired

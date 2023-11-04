@@ -33,3 +33,15 @@
 7. Finally, inside the `deployment` folder, run `docker-compose -f docker-compose-prod.yml up`. The images should be downloaded and will start running!
 8. Go to Postman and create GET/Post request with the link `http://localhost:8080/user/register?email=user@email.com&userName=user`, you can see the request is successful!
 
+## How to run
+1. User Register
+   - Start up user-opt service and send a POST request such as
+     ```
+     url: http://localhost:8081/user/register
+     {
+        "email": "Daryl@mcmaster.ca",
+        "userName": "Daryl"
+     }
+     ```
+2. Trail Allocation
+3. Game 

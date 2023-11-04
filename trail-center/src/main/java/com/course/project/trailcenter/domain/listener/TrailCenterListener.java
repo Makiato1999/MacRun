@@ -22,9 +22,9 @@ public class TrailCenterListener {
 
     @RabbitListener(
             bindings = @QueueBinding(
-                    value = @Queue(value = RabbitConfiguration.QUEUE_NAME_TRAIL_ALLOCATION, durable = "true"),
-                    exchange = @Exchange(value = RabbitConfiguration.EXCHANGE_NAME_TRAIL_ALLOCATION, ignoreDeclarationExceptions = "true"),
-                    key = RabbitConfiguration.ROUTING_KEY_TRAIL_ALLOCATION))
+                    value = @Queue(value = RabbitConfiguration.QUEUE_NAME_USER_REGISTER, durable = "true"),
+                    exchange = @Exchange(value = RabbitConfiguration.EXCHANGE_NAME_USER_REGISTER, ignoreDeclarationExceptions = "true"),
+                    key = RabbitConfiguration.ROUTING_KEY_USER_REGISTER))
     public void receiveMsg(UserEntity payload, Channel channel,
                            @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
         log.info("TrailCenter has received message: '" + payload + "'");
