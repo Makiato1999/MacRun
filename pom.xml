@@ -24,8 +24,9 @@
         <module>macrun</module>
         <module>discovery-server</module>
         <module>user-opt</module>
-
+        <module>heartrate-monitor</module>
         <module>game-center</module>
+        <module>challenge-center</module>
     </modules>
 
 
