@@ -26,6 +26,8 @@
         <module>user-opt</module>
         <module>heartrate-monitor</module>
         <module>game-center</module>
+        <module>trail-center</module>
+        <module>user-opt</module>
         <module>challenge-center</module>
     </modules>
 
