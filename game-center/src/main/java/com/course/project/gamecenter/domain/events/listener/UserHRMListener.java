@@ -18,9 +18,9 @@ import org.springframework.stereotype.Component;
 public class UserHRMListener {
 
     //todo
-    private static final String QUEUE_NAME = "";
-    private static final String EXCHANGE_NAME = "";
-    private static final String ROUTING_KEY = "";
+    private static final String QUEUE_NAME = "user_hrm_listener_queue";
+    private static final String EXCHANGE_NAME = "user_hrm_listener_exchange";
+    private static final String ROUTING_KEY = "user_hrm_listener_routing";
 
     @Resource
     private GameCenterService gameCenterService;
