@@ -27,11 +27,6 @@ public class Response<T> implements Serializable {
         this.data = data;
     }
 
-    public void setResponseCode(RESPENUM code) {
-        this.code = code.getCode();
-        this.msg = code.getDesc();
-    }
-
     public static <T> Response<T> success(T data) {
         return success(data, "");
     }
@@ -46,5 +41,10 @@ public class Response<T> implements Serializable {
 
     public static <T> Response<T> fail(String message) {
         return new Response<>(RESPENUM.INTERNAL_ERR.getCode(), message, null);
+    }
+
+    public void setResponseCode(RESPENUM code) {
+        this.code = code.getCode();
+        this.msg = code.getDesc();
     }
 }

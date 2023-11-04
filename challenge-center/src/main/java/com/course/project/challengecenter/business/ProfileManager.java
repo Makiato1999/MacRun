@@ -30,29 +30,26 @@ public class ProfileManager implements ProfileService {
         if (userId == null) {
             return null;
         }
-        if (userinfo.getScore()>=90) {
+        if (userinfo.getScore() >= 90) {
             name = "Advanced Badges";
-        }
-        else if (userinfo.getScore()>=80 && userinfo.getScore()<90) {
+        } else if (userinfo.getScore() >= 80 && userinfo.getScore() < 90) {
             name = "Intermedia Badges";
-        }
-        else if (userinfo.getScore()>=70 && userinfo.getScore()<80) {
+        } else if (userinfo.getScore() >= 70 && userinfo.getScore() < 80) {
             name = "Starter Badges";
-        }
-        else {
+        } else {
             return null;
         }
 
 //        String name = "Badges" + id;
-        LocalDateTime createDate = LocalDateTime.now() ;
+        LocalDateTime createDate = LocalDateTime.now();
         Badges badges = Badges.builder()
-                        .id(id)
-                        .userId(userId)
-                        .name(name)
-                        .createDate(createDate)
-                        .build();
+                .id(id)
+                .userId(userId)
+                .name(name)
+                .createDate(createDate)
+                .build();
 //        if (!userBadgesDAO.alreadyExist(userId, badges)) {
-            userBadgesDAO.createBadges(userId,badges);
+        userBadgesDAO.createBadges(userId, badges);
 //        }
         return badges;
     }
@@ -72,6 +69,7 @@ public class ProfileManager implements ProfileService {
                 .badges(badges)
                 .build();
     }
+
     public ArrayList<Badges> getUserBadges(Long userId) {
         if (userBadgesDAO.containUserName(userId)) {
             return userBadgesDAO.getBadgesByUserId(userId);
@@ -79,7 +77,7 @@ public class ProfileManager implements ProfileService {
         return null;
     }
 
-    public Integer getHighestScore(Long userId){
+    public Integer getHighestScore(Long userId) {
         if (userScoreDAO.containUserName(userId)) {
             return userScoreDAO.getHighestScoreByUserId(userId);
         }

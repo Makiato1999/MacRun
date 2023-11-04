@@ -5,8 +5,6 @@ import com.course.project.challengecenter.business.entity.Badges;
 import com.course.project.challengecenter.business.entity.Profile;
 import com.course.project.challengecenter.dto.ScoreReq;
 import com.course.project.challengecenter.port.ProfileService;
-import com.course.project.gamecenter.business.entity.GameAttachDataEntity;
-import com.course.project.useropt.business.entities.UserEntity;
 import com.rabbitmq.client.Channel;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +15,7 @@ import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.support.AmqpHeaders;
 import org.springframework.messaging.handler.annotation.Header;
 import org.springframework.stereotype.Component;
+
 @Component
 @Slf4j
 public class ScoreListener {

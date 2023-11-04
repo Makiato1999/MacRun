@@ -2,8 +2,6 @@ package com.course.project.heartratemonitor.dto;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @ToString
 @Getter
 @Setter
