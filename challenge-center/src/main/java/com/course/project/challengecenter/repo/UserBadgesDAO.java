@@ -3,7 +3,6 @@ package com.course.project.challengecenter.repo;
 import com.course.project.challengecenter.business.entity.Badges;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,22 +18,22 @@ public class UserBadgesDAO {
     public Boolean containUserName(Long userId) {
         return userBadgesMap.containsKey(userId);
     }
+
     public Boolean containBadges(Long userId, Badges badges) {
         return userBadgesMap.get(userId).contains(badges);
     }
 
     public void createBadges(Long userId, Badges badges) {
-        if (!containUserName(userId)){
+        if (!containUserName(userId)) {
             ArrayList<Badges> badgesList = new ArrayList<Badges>();
             badgesList.add(badges);
             userBadgesMap.put(userId, badgesList);
-        }
-        else {
+        } else {
             ArrayList<Badges> badgesList = userBadgesMap.get(userId);
             List<String> badgeName = badgesList.stream()
                     .map(Badges::getName)
                     .collect(Collectors.toList());
-            if (!badgeName.contains(badges.getName())){
+            if (!badgeName.contains(badges.getName())) {
                 badgesList.add(badges);
                 userBadgesMap.put(userId, badgesList);
             }
@@ -47,7 +46,7 @@ public class UserBadgesDAO {
     }
 
     public boolean alreadyExist(Long userId, Badges badges) {
-        if (containUserName(userId) || containBadges(userId, badges)){
+        if (containUserName(userId) || containBadges(userId, badges)) {
             return false;
         }
         return true;

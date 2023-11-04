@@ -15,10 +15,10 @@ public class DiscoveryServerApplication {
 /**
  * ==> issue:
  * I can't start eureka server and access http://localhost:8761/
- *
+ * <p>
  * ==> solution:
  * https://stackoverflow.com/questions/56943586/not-able-to-start-eureka-server
- *
+ * <p>
  * Make sure Spring Cloud Version and Spring Version is supposed to work together,
  * Check the compatible versions here:
  * https://spring.io/projects/spring-cloud

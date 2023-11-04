@@ -1,9 +1,9 @@
 package com.course.project.useropt.business;
 
-import com.course.project.useropt.port.UserCrudService;
 import com.course.project.useropt.business.entities.UserEntity;
 import com.course.project.useropt.domain.event.producer.UserRegisterProducer;
 import com.course.project.useropt.domain.repository.UserRepository;
+import com.course.project.useropt.port.UserCrudService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 

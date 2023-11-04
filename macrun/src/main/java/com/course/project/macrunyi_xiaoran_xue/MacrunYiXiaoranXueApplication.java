@@ -8,8 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //@EnableEurekaClient //
 public class MacrunYiXiaoranXueApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(MacrunYiXiaoranXueApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(MacrunYiXiaoranXueApplication.class, args);
+    }
 
 }

@@ -18,6 +18,15 @@ public enum AttackEnum {
         this.desc = desc;
     }
 
+    public static AttackEnum getEnumById(Integer id) {
+        for (AttackEnum attachEnum : AttackEnum.values()) {
+            if (attachEnum.id.equals(id)) {
+                return attachEnum;
+            }
+        }
+        return null;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -32,14 +41,5 @@ public enum AttackEnum {
 
     public void setDesc(String desc) {
         this.desc = desc;
-    }
-
-    public static AttackEnum getEnumById(Integer id) {
-        for (AttackEnum attachEnum : AttackEnum.values()) {
-            if (attachEnum.id.equals(id)) {
-                return attachEnum;
-            }
-        }
-        return null;
     }
 }

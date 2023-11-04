@@ -1,4 +1,5 @@
 package com.course.project.macrunyi_xiaoran_xue;
+
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;
 import com.netflix.discovery.shared.Application;
@@ -16,11 +17,9 @@ import java.util.Random;
 @Slf4j
 @Service
 public class MacrunClient {
-    private final RabbitTemplate rabbitTemplate;
     private static final String ENDPOINT = "v1/macrun";
     private static final String APP_NAME = "eureka-registry";
-
-
+    private final RabbitTemplate rabbitTemplate;
     //Eureka client to look up services
     private final EurekaClient registry;
 
@@ -39,7 +38,7 @@ public class MacrunClient {
         Random rand = new Random();
         InstanceInfo infos = // Randomly picking one email service among candidates
                 candidates.getInstances().get(rand.nextInt(candidates.size()));
-        return "http://"+infos.getIPAddr()+":"+infos.getPort();
+        return "http://" + infos.getIPAddr() + ":" + infos.getPort();
     }
 
     private WebClient buildClient() {

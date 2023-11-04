@@ -1,8 +1,8 @@
 package com.course.project.useropt.adapters;
 
-import com.course.project.useropt.port.UserCrudService;
-import com.course.project.useropt.business.entities.UserEntity;
 import com.course.project.useropt.adapters.resp.Response;
+import com.course.project.useropt.business.entities.UserEntity;
+import com.course.project.useropt.port.UserCrudService;
 import jakarta.annotation.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;

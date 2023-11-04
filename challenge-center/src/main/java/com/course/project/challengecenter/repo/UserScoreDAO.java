@@ -1,10 +1,8 @@
 package com.course.project.challengecenter.repo;
 
-import com.course.project.challengecenter.business.entity.Badges;
 import com.course.project.challengecenter.dto.ScoreReq;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,15 +16,15 @@ public class UserScoreDAO {
     public Boolean containUserName(Long userId) {
         return userScoreMap.containsKey(userId);
     }
+
     public void updateHighestScore(ScoreReq userinfo) {
         Long userId = userinfo.getUserId();
         Integer score = userinfo.getScore();
-        if (!containUserName(userId)){
+        if (!containUserName(userId)) {
             userScoreMap.put(userId, score);
-        }
-        else {
+        } else {
             Integer originScore = userScoreMap.get(userId);
-            if (originScore<score) {
+            if (originScore < score) {
                 userScoreMap.put(userId, score);
             }
         }
