@@ -18,5 +18,4 @@ public class Badges {
     private String name;
     private LocalDateTime createDate;
 
-
 }

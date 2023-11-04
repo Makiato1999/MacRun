@@ -4,6 +4,7 @@ import com.course.project.challengecenter.RabbitConfiguration;
 import com.course.project.challengecenter.business.entity.Badges;
 import com.course.project.challengecenter.business.entity.Profile;
 import com.course.project.challengecenter.dto.ScoreReq;
+import com.course.project.challengecenter.port.BadgesService;
 import com.course.project.challengecenter.port.ProfileService;
 import com.rabbitmq.client.Channel;
 import jakarta.annotation.Resource;
@@ -21,6 +22,8 @@ import org.springframework.stereotype.Component;
 public class ScoreListener {
     @Resource
     private ProfileService profileService;
+    @Resource
+    private BadgesService badgesService;
 
     @RabbitListener(
             bindings = @QueueBinding(
@@ -36,7 +39,7 @@ public class ScoreListener {
         }
 
 
-        Badges badges = profileService.genereateBadges(payload);
+        Badges badges = badgesService.genereateBadges(payload);
         Profile profile = profileService.genereateProfile(payload);
         log.info("Congratulations, you get this new badges: '" + badges + "'");
         log.info("Profile: '" + profile + "'");
