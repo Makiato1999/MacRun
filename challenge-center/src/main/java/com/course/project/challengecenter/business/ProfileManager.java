@@ -24,13 +24,26 @@ public class ProfileManager implements ProfileService {
 
     @Override
     public Badges genereateBadges(ScoreReq userinfo) {
-
         Long id = new Random().nextLong();
         Long userId = userinfo.getUserId();
+        String name;
         if (userId == null) {
             return null;
         }
-        String name = "Badges" + id;
+        if (userinfo.getScore()>=90) {
+            name = "Advanced Badges";
+        }
+        else if (userinfo.getScore()>=80 && userinfo.getScore()<90) {
+            name = "Intermedia Badges";
+        }
+        else if (userinfo.getScore()>=70 && userinfo.getScore()<80) {
+            name = "Starter Badges";
+        }
+        else {
+            return null;
+        }
+
+//        String name = "Badges" + id;
         LocalDateTime createDate = LocalDateTime.now() ;
         Badges badges = Badges.builder()
                         .id(id)
@@ -38,10 +51,9 @@ public class ProfileManager implements ProfileService {
                         .name(name)
                         .createDate(createDate)
                         .build();
-        if (!userBadgesDAO.containUserName(userId) || !userBadgesDAO.containBadges(badges)) {
+//        if (!userBadgesDAO.alreadyExist(userId, badges)) {
             userBadgesDAO.createBadges(userId,badges);
-        }
-
+//        }
         return badges;
     }
 
@@ -50,7 +62,7 @@ public class ProfileManager implements ProfileService {
 
         // find userinfo in user entity by userid?
         Long userId = userinfo.getUserId();
-        userScoreDAO.updateHightestScore(userinfo);
+        userScoreDAO.updateHighestScore(userinfo);
         Integer highestScore = getHighestScore(userId);
         ArrayList<Badges> badges = getUserBadges(userId);
 

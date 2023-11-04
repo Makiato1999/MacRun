@@ -36,10 +36,11 @@ public class ScoreListener {
             return;
         }
 
+
         Badges badges = profileService.genereateBadges(payload);
         Profile profile = profileService.genereateProfile(payload);
-        log.info("you get this badges: '" + badges + "'");
-        log.info("profile: '" + profile + "'");
+        log.info("Congratulations, you get this new badges: '" + badges + "'");
+        log.info("Profile: '" + profile + "'");
 
 
     }

@@ -18,11 +18,7 @@ public class UserScoreDAO {
     public Boolean containUserName(Long userId) {
         return userScoreMap.containsKey(userId);
     }
-    public Boolean containBadges(Badges badges) {
-        return userScoreMap.containsValue(badges);
-    }
-
-    public void updateHightestScore(ScoreReq userinfo) {
+    public void updateHighestScore(ScoreReq userinfo) {
         Long userId = userinfo.getUserId();
         Integer score = userinfo.getScore();
         if (!containUserName(userId)){
