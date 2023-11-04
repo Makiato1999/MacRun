@@ -10,8 +10,8 @@ import org.springframework.stereotype.Service;
 public class UserScoreProducer {
 
     //todo
-    private static final String EXCHANGE_NAME = "";
-    private static final String ROUTING_NAME = "";
+    private static final String EXCHANGE_NAME = "user_score_exchange";
+    private static final String ROUTING_NAME = "user_score_routing";
 
     private final RabbitTemplate rabbitTemplate;
 
