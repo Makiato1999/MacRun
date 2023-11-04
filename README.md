@@ -37,3 +37,15 @@
 8. Go to Postman and create GET/Post request with the
    link `http://localhost:8080/user/register?email=user@email.com&userName=user`, you can see the request is successful!
 
+## Run this App
+1. User Register
+   - start up user-opt service
+   - send a POST request such as
+     ```
+     url: http://localhost:8075/user/register
+     body:
+     {
+        "email": "Daryl@mcmaster.ca",
+        "userName": "Daryl"
+     }
+     ```
