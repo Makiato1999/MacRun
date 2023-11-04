@@ -11,13 +11,13 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 @Configuration
 @EnableRabbit
 public class RabbitConfiguration {
-    public static final String QUEUE_NAME = "queue_test";
-    public static final String EXCHANGE_NAME = "exchange_test";
-    public static final String ROUTING_KEY = "yi_test_routing";
-
     public static final String QUEUE_NAME_USER_REGISTER = "user_register_queue";
     public static final String EXCHANGE_NAME_USER_REGISTER = "exchange_test";
     public static final String ROUTING_KEY_USER_REGISTER = "user_register_routing";
+
+    public static final String QUEUE_NAME_TRAIL_ALLOCATION = "trail_allocation_queue";
+    public static final String EXCHANGE_NAME_TRAIL_ALLOCATION = "exchange_test";
+    public static final String ROUTING_KEY_TRAIL_ALLOCATION = "trail_allocation_routing";
 
     // https://stackoverflow.com/a/59970323
     @Bean

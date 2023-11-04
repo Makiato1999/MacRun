@@ -27,7 +27,7 @@
 
         <module>game-center</module>
         <module>trail-center</module>
-        <module>user-center</module>
+        <module>user-opt</module>
     </modules>
 
 
