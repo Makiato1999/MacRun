@@ -39,7 +39,7 @@ public class TrailCenterManager implements TrailCenterService {
         int trailRoute = random.nextInt(10);
         String trailName = "The " + trailRoute + "th Campus Trail";
         // allocate Trail map
-        ArrayList<Integer> trailMap = new ArrayList<>(100);
+        ArrayList<Integer> trailMap = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             trailMap.add(random.nextInt(4));
         }

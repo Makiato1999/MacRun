@@ -38,8 +38,8 @@
    link `http://localhost:8080/user/register?email=user@email.com&userName=user`, you can see the request is successful!
 
 ## Run this App
-1. User Register
-   - start up user-opt service
+1. User Register -> Trail Allocation -> Game Center
+   - start up user-opt service, trail-center service, game-center service
    - send a POST request such as
      ```
      url: http://localhost:8075/user/register
@@ -47,5 +47,15 @@
      {
         "email": "Daryl@mcmaster.ca",
         "userName": "Daryl"
+     }
+     ```
+2. User Operation -> Game Center (Attack Decision)
+   - start up user-opt service and game-center service
+   - send a POST request such as
+     ```
+     url: http://localhost:8075/user/opt
+     body:
+     {
+        "optID": "2"
      }
      ```

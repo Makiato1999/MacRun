@@ -13,7 +13,7 @@ public class TrailCenterController {
     private static final String ENDPOINT = "/trail";
 
     @Resource
-    private final TrailCenterManager manager;
+    private TrailCenterManager manager;
 
     @Autowired
     public TrailCenterController(TrailCenterManager manager) {

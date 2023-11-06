@@ -17,7 +17,7 @@ public class TrailCenterProducer {
     }
 
     public void sender(Object msg) {
+        log.info("TrailCenter has sent message to trail_allocation_queue: '" + msg + "'");
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME_TRAIL_ALLOCATION, RabbitConfiguration.ROUTING_KEY_TRAIL_ALLOCATION, msg);
-        log.info("TrailCenter has sent message: '" + msg + "'");
     }
 }
