@@ -16,6 +16,10 @@ public class RabbitConfiguration {
     public static final String EXCHANGE_NAME_USER_REGISTER = "user_register_exchange";
     public static final String ROUTING_KEY_USER_REGISTER = "user_register_routing";
 
+    public static final String QUEUE_NAME_USER_OPT = "user_opt_queue";
+    public static final String EXCHANGE_NAME_USER_OPT = "user_opt_exchange";
+    public static final String ROUTING_KEY_USER_OPT = "user_opt_routing";
+
     // https://stackoverflow.com/a/59970323
     @Bean
     public Jackson2JsonMessageConverter converter(Jackson2ObjectMapperBuilder builder) {

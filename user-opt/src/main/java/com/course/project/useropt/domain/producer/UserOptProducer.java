@@ -8,23 +8,16 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public class UserRegisterProducer {
+public class UserOptProducer {
     private final RabbitTemplate rabbitTemplate;
 
     @Autowired
-    public UserRegisterProducer(RabbitTemplate rabbitTemplate) {
+    public UserOptProducer(RabbitTemplate rabbitTemplate) {
         this.rabbitTemplate = rabbitTemplate;
     }
 
     public void sender(Object msg) {
-        log.info("UserOpt has sent message to user_register_queue: '" + msg + "'");
-        rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME_USER_REGISTER, RabbitConfiguration.ROUTING_KEY_USER_REGISTER, msg);
+        log.info("UserOpt has sent message to game_center_queue: '" + msg + "'");
+        rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME_USER_OPT, RabbitConfiguration.ROUTING_KEY_USER_OPT, msg);
     }
 }
-
-
-
-
-
-
-

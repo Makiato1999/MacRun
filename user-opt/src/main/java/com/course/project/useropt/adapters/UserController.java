@@ -1,12 +1,13 @@
 package com.course.project.useropt.adapters;
 
 import com.course.project.useropt.business.UserCrudManager;
-import com.course.project.useropt.dto.CreateUserRequest;
+import com.course.project.useropt.business.UserOptManager;
+import com.course.project.useropt.business.entities.UserOptEntity;
+import com.course.project.useropt.dto.UserCrudRequest;
 import com.course.project.useropt.business.entities.UserEntity;
 
 import com.course.project.useropt.adapters.resp.Response;
-import com.course.project.useropt.business.entities.UserEntity;
-import com.course.project.useropt.port.UserCrudService;
+import com.course.project.useropt.dto.UserOptRequest;
 import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,8 @@ public class UserController {
     private static final String ENDPOINT = "/user";
     @Resource
     private UserCrudManager userCrudManager;
+    @Resource
+    private UserOptManager userOptManager;
 
     @GetMapping(ENDPOINT + "/default")
     public UserEntity defaultUser() {
@@ -23,10 +26,16 @@ public class UserController {
     }
 
     @PostMapping(ENDPOINT + "/register")
-    public UserEntity sendMsg(@RequestBody CreateUserRequest req) {
+    public UserEntity createUserCrud(@RequestBody UserCrudRequest req) {
         UserEntity user = UserEntity.builder().email(req.getEmail()).userName(req.getUserName()).build();
         UserEntity userEntity = userCrudManager.register(user);
         return Response.success(userEntity).getData();
+    }
+
+    @PostMapping(ENDPOINT + "/opt")
+    public UserOptEntity createUserOpt(@RequestBody UserOptRequest req) {
+        UserOptEntity userOpt = userOptManager.operate(req.getOptID());
+        return Response.success(userOpt).getData();
     }
 
     /*

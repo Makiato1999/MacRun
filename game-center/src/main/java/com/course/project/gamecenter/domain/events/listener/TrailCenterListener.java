@@ -1,7 +1,6 @@
 package com.course.project.gamecenter.domain.events.listener;
 
 import com.course.project.gamecenter.business.entity.TrailEntity;
-import com.course.project.gamecenter.dto.GameAttackReq;
 import com.course.project.gamecenter.port.GameCenterService;
 import com.rabbitmq.client.Channel;
 import jakarta.annotation.Resource;
@@ -33,7 +32,7 @@ public class TrailCenterListener {
                     key = ROUTING_KEY_TRAIL))
     public void receiveMsg(TrailEntity payload, Channel channel,
                            @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
-        log.info("receive message: '" + payload + "'");
+        log.info("GameCenter has received message from trail_allocation_queue: '" + payload + "'");
         if (payload == null) {
             return;
         }

@@ -27,7 +27,7 @@ public class TrailCenterListener {
                     key = RabbitConfiguration.ROUTING_KEY_USER_REGISTER))
     public void receiveMsg(UserEntity payload, Channel channel,
                            @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
-        log.info("TrailCenter has received message: '" + payload + "'");
+        log.info("TrailCenter has received message from user_register_queue: '" + payload + "'");
         if (payload == null) {
             return;
         }
