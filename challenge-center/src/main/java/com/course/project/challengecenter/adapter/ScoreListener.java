@@ -30,7 +30,6 @@ public class ScoreListener {
                     value = @Queue(value = RabbitConfiguration.QUEUE_NAME_SCORE, durable = "true"),
                     exchange = @Exchange(value = RabbitConfiguration.EXCHANGE_NAME_SCORE, ignoreDeclarationExceptions = "true"),
                     key = RabbitConfiguration.ROUTING_KEY_SCORE))
-    // get other info to generate profile/badges?
     public void receiveMsg(ScoreReq payload, Channel channel,
                            @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
         log.info("receive message: '" + payload + "'");
@@ -39,8 +38,8 @@ public class ScoreListener {
         }
 
 
-        Badges badges = badgesService.genereateBadges(payload);
-        Profile profile = profileService.genereateProfile(payload);
+        Badges badges = badgesService.generateBadges(payload);
+        Profile profile = profileService.generateProfile(payload);
         log.info("Congratulations, you get this new badges: '" + badges + "'");
         log.info("Profile: '" + profile + "'");
 

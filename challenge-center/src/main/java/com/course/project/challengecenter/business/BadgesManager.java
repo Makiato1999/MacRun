@@ -8,7 +8,6 @@ import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.Random;
 
 
@@ -16,9 +15,10 @@ import java.util.Random;
 public class BadgesManager implements BadgesService {
 
     @Resource
-    private UserBadgesDAO userBadgesDAO;
+    private UserBadgesDAO userBadgesDAO = new UserBadgesDAO();
+
     @Override
-    public Badges genereateBadges(ScoreReq userinfo) {
+    public Badges generateBadges(ScoreReq userinfo) {
         Long id = new Random().nextLong();
         Long userId = userinfo.getUserId();
         String name;
@@ -26,11 +26,11 @@ public class BadgesManager implements BadgesService {
             return null;
         }
         if (userinfo.getScore() >= 90) {
-            name = "Advanced Badges";
+            name = "Advanced Badge";
         } else if (userinfo.getScore() >= 80 && userinfo.getScore() < 90) {
-            name = "Intermedia Badges";
+            name = "Intermedia Badge";
         } else if (userinfo.getScore() >= 70 && userinfo.getScore() < 80) {
-            name = "Starter Badges";
+            name = "Starter Badge";
         } else {
             return null;
         }

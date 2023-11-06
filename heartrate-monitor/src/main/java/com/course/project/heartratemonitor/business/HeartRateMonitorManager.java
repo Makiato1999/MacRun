@@ -11,7 +11,6 @@ import java.util.Random;
 @Slf4j
 public class HeartRateMonitorManager {
     BiometricService biometricService;
-
     HeartrateRecord heartrateRecord;
     Integer lastHeartRate = 72;
     // minimum heartrate
@@ -24,17 +23,17 @@ public class HeartRateMonitorManager {
     // this module simulates a heartrate monitor by sending a bunch of heartrates
     public HeartRateMonitorManager(BiometricService biometricService) {
         this.biometricService = biometricService;
-
         this.heartrateRecord = biometricService.createHeartrateRecord(new Random().nextLong());
-
     }
 
     @Scheduled(fixedRate=1000) // https://stackoverflow.com/a/36542208
     public void sendData() {
         Integer heartRate = generateNextHeartrate();
+        Random random = new Random();
+        Long latitude = -90 + (90 - (-90)) * random.nextLong();
+        Long longitude = -180 + (180 - (-180)) * random.nextLong();
         log.info("Sending heartrate: " + heartRate + "bpm");
-        biometricService.sendHeartrate(new Random().nextLong(), new Random().nextLong(),new Random().nextLong(), heartRate);
-
+        biometricService.sendHeartrate(new Random().nextLong(), latitude, longitude, heartRate);
     }
 
     // Generates the next random heartrate in a sequence, from 60 to 200.

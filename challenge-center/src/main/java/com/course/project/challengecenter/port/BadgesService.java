@@ -5,6 +5,6 @@ import com.course.project.challengecenter.dto.ScoreReq;
 
 public interface BadgesService {
 
-    Badges genereateBadges(ScoreReq userinfo);
+    Badges generateBadges(ScoreReq userinfo);
 
 }
