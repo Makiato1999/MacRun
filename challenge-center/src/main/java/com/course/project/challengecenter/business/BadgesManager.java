@@ -12,7 +12,7 @@ import java.util.Random;
 
 
 @Service
-public class BadgesManager implements BadgesService {
+public class BadgesManager implements BadgesService  {
 
     @Resource
     private UserBadgesDAO userBadgesDAO = new UserBadgesDAO();

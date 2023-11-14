@@ -21,9 +21,9 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class ScoreListener {
     @Resource
-    private ProfileService profileService;
+    public ProfileService profileService;
     @Resource
-    private BadgesService badgesService;
+    public BadgesService badgesService;
 
     @RabbitListener(
             bindings = @QueueBinding(
