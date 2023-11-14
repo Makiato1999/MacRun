@@ -17,7 +17,7 @@ public class UserRegisterProducer {
     }
 
     public void sender(Object msg) {
-        log.info("UserOpt has sent message to user_register_queue: '" + msg + "'");
+//        log.info("UserOpt has sent message to user_register_queue: '" + msg + "'");
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME_USER_REGISTER, RabbitConfiguration.ROUTING_KEY_USER_REGISTER, msg);
     }
 }

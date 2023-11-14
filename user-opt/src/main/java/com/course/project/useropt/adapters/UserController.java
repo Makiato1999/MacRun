@@ -9,10 +9,12 @@ import com.course.project.useropt.business.entities.UserEntity;
 import com.course.project.useropt.adapters.resp.Response;
 import com.course.project.useropt.dto.UserOptRequest;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(produces = "application/json")
+@Slf4j
 public class UserController {
     private static final String ENDPOINT = "/user";
     @Resource
@@ -27,8 +29,12 @@ public class UserController {
 
     @PostMapping(ENDPOINT + "/register")
     public UserEntity createUserCrud(@RequestBody UserCrudRequest req) {
+
+        log.info("【Scenario1 - User_Register】-【User Center】user action - register, userName={}", req.getUserName());
+
         UserEntity user = UserEntity.builder().email(req.getEmail()).userName(req.getUserName()).build();
         UserEntity userEntity = userCrudManager.register(user);
+
         return Response.success(userEntity).getData();
     }
 

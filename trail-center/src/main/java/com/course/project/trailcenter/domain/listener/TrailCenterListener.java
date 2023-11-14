@@ -27,10 +27,13 @@ public class TrailCenterListener {
                     key = RabbitConfiguration.ROUTING_KEY_USER_REGISTER))
     public void receiveMsg(UserEntity payload, Channel channel,
                            @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
-        log.info("TrailCenter has received message from user_register_queue: '" + payload + "'");
-        if (payload == null) {
+
+        if (payload == null || payload.getUserId() == null) {
             return;
         }
+        log.info("【Scenario2 - Trail_Center】-【Trail_Center】receive mq msg from【User Center】, userId={},userName={}",
+                payload.getUserId(), payload.getUserName());
+
         trailCenterManager.allocate(payload.getUserId(), payload.getLongitude(), payload.getLatitude());
     }
 }

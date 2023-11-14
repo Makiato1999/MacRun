@@ -5,9 +5,11 @@ import com.course.project.useropt.domain.producer.UserRegisterProducer;
 import com.course.project.useropt.repository.UserRepository;
 import com.course.project.useropt.port.UserCrudService;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
+@Slf4j
 public class UserCrudManager implements UserCrudService {
     @Resource
     private UserRepository userRepository;
@@ -17,7 +19,11 @@ public class UserCrudManager implements UserCrudService {
     @Override
     public UserEntity register(UserEntity userEntity) {
         UserEntity res = userRepository.addNewUser(userEntity.getEmail(), userEntity.getUserName());
+        if (res == null) {
+            return null;
+        }
 
+        log.info("【Scenario1 - User_Register】-【User Center】user register msg sent to mq (Destination: 【Trail Center】), userId={},userName={}", res.getUserId(), res.getUserName());
         // send mq to queue
         userRegisterProducer.sender(res);
         return res;

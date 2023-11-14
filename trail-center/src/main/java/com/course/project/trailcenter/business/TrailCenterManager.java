@@ -22,8 +22,13 @@ public class TrailCenterManager implements TrailCenterService {
     @Override
     public TrailEntity allocate(Long userId, String longitude, String latitude) {
         TrailEntity trail = allocatePolicy(longitude, latitude);
+        log.info("【Scenario2 - Trail_Center】-【Trail_Center】allocate trail, userId={},trailId={},trailName={}",
+                userId, trail.getTrailId(), trail.getTrailName());
+
         trailRepository.addNewTrail(trail.getTrailId(), trail.getTrailName(), trail.getTrailMap());
 
+        log.info("【Scenario2 - Trail_Center】-【Trail_Center】send trail msg to 【Game Center】, userId={},trailId={},trailName={}",
+                userId, trail.getTrailId(), trail.getTrailName());
         // send mq to queue
         trailCenterProducer.sender(trail);
 
