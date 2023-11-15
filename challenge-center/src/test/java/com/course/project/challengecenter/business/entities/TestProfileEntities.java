@@ -1,4 +1,4 @@
-package com.course.project.challengecenter.entities;
+package com.course.project.challengecenter.business.entities;
 
 
 import com.course.project.challengecenter.business.BadgesManager;
@@ -24,12 +24,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class TestProfileEntities {
 
 
+    static List<Integer> scores;
     private static Long userId;
     private static List<Badges> badges = new ArrayList<>();
-
     private static Badges badge = new Badges();
     private static Profile profile;
-    static List<Integer> scores;
 
     @BeforeClass
     public static void init() {

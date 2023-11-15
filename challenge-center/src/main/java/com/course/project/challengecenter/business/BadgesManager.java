@@ -12,10 +12,10 @@ import java.util.Random;
 
 
 @Service
-public class BadgesManager implements BadgesService  {
+public class BadgesManager implements BadgesService {
 
     @Resource
-    private UserBadgesDAO userBadgesDAO = new UserBadgesDAO();
+    UserBadgesDAO userBadgesDAO = new UserBadgesDAO();
 
     @Override
     public Badges generateBadges(ScoreReq userinfo) {

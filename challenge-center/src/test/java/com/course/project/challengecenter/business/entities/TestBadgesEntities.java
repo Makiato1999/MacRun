@@ -1,4 +1,4 @@
-package com.course.project.challengecenter.entities;
+package com.course.project.challengecenter.business.entities;
 
 import com.course.project.challengecenter.business.BadgesManager;
 import com.course.project.challengecenter.business.entity.Badges;
