@@ -31,7 +31,7 @@ public class TrailCenterListener {
             return;
         }
 
-        log.info("【Scenario3 - GameCenter】-【GameCenter】receive mq msg from【Trail Center】, userId={},userName={}",
+        log.info("【Scenario301 - GameCenter】-【GameCenter】receive mq msg from【Trail Center】, userId={},userName={}",
                 payload.getUserId(), payload.getTrailId());
 
 

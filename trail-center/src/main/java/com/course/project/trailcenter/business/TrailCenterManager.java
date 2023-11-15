@@ -29,6 +29,9 @@ public class TrailCenterManager implements TrailCenterService {
 
         log.info("【Scenario2 - Trail_Center】-【Trail_Center】send trail msg to 【Game Center】, userId={},trailId={},trailName={}",
                 userId, trail.getTrailId(), trail.getTrailName());
+
+        trail.setUserId(userId);
+
         // send mq to queue
         trailCenterProducer.sender(trail);
 

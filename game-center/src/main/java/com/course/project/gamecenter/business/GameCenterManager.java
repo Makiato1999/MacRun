@@ -72,7 +72,7 @@ public class GameCenterManager implements GameCenterService {
 
     @Override
     public void upsertUserTrailId(Long userId, Integer trailId) {
-        log.info("【Scenario3 - GameCenter】-【GameCenter】update user and trailId relation, userId={},trailId={},", userId, trailId);
+        log.info("【Scenario301 - GameCenter】-【GameCenter】update user and trailId relation to db, userId={},trailId={},", userId, trailId);
 
         userTrailDAO.upsertUserTrailId(userId, trailId);
     }
