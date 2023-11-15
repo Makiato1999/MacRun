@@ -21,7 +21,7 @@
 
     <modules>
         <!--        <module>eureka-tech</module>-->
-        <module>macrun</module>
+<!--        <module>macrun</module>-->
         <module>discovery-server</module>
         <module>user-opt</module>
         <module>heartrate-monitor</module>
