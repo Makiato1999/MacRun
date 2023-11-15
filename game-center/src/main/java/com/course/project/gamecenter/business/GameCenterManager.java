@@ -3,6 +3,7 @@ package com.course.project.gamecenter.business;
 import com.course.project.gamecenter.business.entity.GameAttachDataEntity;
 import com.course.project.gamecenter.business.entity.GameAttackEntity;
 import com.course.project.gamecenter.business.entity.GamePlayEntity;
+import com.course.project.gamecenter.domain.events.producer.PlayModeUIProduce;
 import com.course.project.gamecenter.domain.events.producer.UserScoreProducer;
 import com.course.project.gamecenter.domain.repository.UserDataDAO;
 import com.course.project.gamecenter.domain.repository.UserModeDAO;
@@ -15,12 +16,14 @@ import com.course.project.gamecenter.port.GameCenterService;
 import com.course.project.gamecenter.utils.AttackUserAlgorithmUtils;
 import com.course.project.gamecenter.utils.CalculateUserScoreAlgorithmUtils;
 import jakarta.annotation.Resource;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
 
 @Service
+@Slf4j
 public class GameCenterManager implements GameCenterService {
 
     @Resource
@@ -35,6 +38,8 @@ public class GameCenterManager implements GameCenterService {
     private CalculateUserScoreAlgorithmUtils calculateUserScoreAlgorithmUtils;
     @Resource
     private UserScoreProducer userScoreProducer;
+    @Resource
+    private PlayModeUIProduce playModeUIProduce;
 
     @Override
     public GamePlayEntity play(GamePlayReq req) {
@@ -48,6 +53,9 @@ public class GameCenterManager implements GameCenterService {
                 .build();
 
         GameAttachDataEntity gameAttachDataEntity = calculateScore(gameAttackDataReq);
+
+        log.info("【Scenario303 - GameCenter】-【GameCenter】User start play end and calculate score, userId={},score={}",
+                userId, gameAttachDataEntity.getScore());
 
         return GamePlayEntity.builder()
                 .userId(userId)
@@ -64,6 +72,8 @@ public class GameCenterManager implements GameCenterService {
 
     @Override
     public void upsertUserTrailId(Long userId, Integer trailId) {
+        log.info("【Scenario3 - GameCenter】-【GameCenter】update user and trailId relation, userId={},trailId={},", userId, trailId);
+
         userTrailDAO.upsertUserTrailId(userId, trailId);
     }
 
@@ -82,14 +92,26 @@ public class GameCenterManager implements GameCenterService {
             return null;
         }
         AttackEnum attackEnum = getAttachEnumByModeId(userId, longitude, latitude);
+        log.info("【Scenario302 - GameCenter】-【GameCenter】generate play mode, userId={},playMode={}",
+                userId, attackEnum.getDesc());
 
-        return GameAttackEntity.builder()
+        GameAttackEntity gameAttackEntity = GameAttackEntity.builder()
                 .userId(userId)
                 .attackId(attackEnum.getId())
                 .attackName(attackEnum.getDesc())
                 .attackTime(new Date())
                 .trailId(trackId)
                 .build();
+
+        //send play mode to user device
+        if (!AttackEnum.DO_NOT_ATTACK.equals(attackEnum)) {
+            log.info("【Scenario302 - GameCenter】-【GameCenter】send mq to user device and display in it, userId={},playMode={}",
+                    userId, attackEnum.getDesc());
+
+            playModeUIProduce.sender(gameAttackEntity);
+        }
+
+        return gameAttackEntity;
     }
 
     @Override
@@ -101,12 +123,12 @@ public class GameCenterManager implements GameCenterService {
 
         userDataDAO.upsertScore(userId, score);
 
-        GameAttachDataEntity gameAttachDataEntity = GameAttachDataEntity.builder()
-                .userId(userId)
-                .score(score)
-                .build();
+        GameAttachDataEntity gameAttachDataEntity = GameAttachDataEntity.builder().userId(userId).score(score).build();
 
         userScoreProducer.sender(gameAttachDataEntity);
+
+        log.info("【Scenario303 - GameCenter】-【GameCenter】send user score to 【Challenge Center】, userId={},score={}",
+                userId, gameAttachDataEntity.getScore());
 
         return gameAttachDataEntity;
     }

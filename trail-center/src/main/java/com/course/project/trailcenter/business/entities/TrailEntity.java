@@ -10,6 +10,8 @@ import java.util.ArrayList;
 @Builder
 @AllArgsConstructor
 public class TrailEntity {
+    private Long userId;
+
     private Integer trailId;
     private String trailName;
     private ArrayList<Integer> trailMap;

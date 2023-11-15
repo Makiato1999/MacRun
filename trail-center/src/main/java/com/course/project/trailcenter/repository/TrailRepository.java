@@ -8,8 +8,8 @@ import java.util.ArrayList;
 @Service
 public class TrailRepository {
 
-    public TrailEntity addNewTrail(Integer trailID, String trailName, ArrayList<Integer> trailMap) {
+    public TrailEntity addNewTrail(Long userId, Integer trailID, String trailName, ArrayList<Integer> trailMap) {
         //todo insert to database
-        return new TrailEntity(trailID, trailName, trailMap);
+        return new TrailEntity(userId, trailID, trailName, trailMap);
     }
 }

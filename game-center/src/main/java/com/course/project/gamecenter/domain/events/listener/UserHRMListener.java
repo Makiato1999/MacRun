@@ -18,9 +18,9 @@ import org.springframework.stereotype.Component;
 public class UserHRMListener {
 
     //todo
-    private static final String QUEUE_NAME = "user_hrm_listener_queue";
-    private static final String EXCHANGE_NAME = "user_hrm_listener_exchange";
-    private static final String ROUTING_KEY = "user_hrm_listener_routing";
+    private static final String QUEUE_NAME = "user_hrm_queue";
+    private static final String EXCHANGE_NAME = "user_hrm_exchange";
+    private static final String ROUTING_KEY = "user_hrm_routing";
 
     @Resource
     private GameCenterService gameCenterService;
@@ -32,10 +32,13 @@ public class UserHRMListener {
                     key = ROUTING_KEY))
     public void receiveMsg(GameAttackReq payload, Channel channel,
                            @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
-        log.info("receive message: '" + payload + "'");
         if (payload == null) {
             return;
         }
+
+        log.info("【Scenario302 - GameCenter】-【GameCenter】receive mq msg from【HRM】, userId={},heartRate={}",
+                payload.getUserId(), payload.getHeartRateCnt());
+
         gameCenterService.generateAttackMode(payload);
     }
 }

@@ -8,9 +8,9 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
 public class RabbitConfiguration {
 
-    public static final String QUEUE_NAME = "hrm_test";
-    public static final String EXCHANGE_NAME = "hrm_exchange";
-    public static final String ROUTING_KEY = "hrm_route";
+    public static final String QUEUE_NAME = "user_hrm_queue";
+    public static final String EXCHANGE_NAME = "user_hrm_exchange";
+    public static final String ROUTING_KEY = "user_hrm_routing";
 
 //    public static final String EXCHANGE_NAME = "";
 //    public static final String ROUTING_KEY = "";

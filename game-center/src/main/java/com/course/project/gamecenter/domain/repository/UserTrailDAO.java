@@ -19,6 +19,8 @@ public class UserTrailDAO {
     }
 
     public void upsertUserTrailId(Long userId, Integer trailId) {
+
+
         userTrailMap.put(userId, trailId);
     }
 

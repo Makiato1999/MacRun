@@ -25,16 +25,16 @@ public class TrailCenterListener {
     @Resource
     private GameCenterService gameCenterService;
 
-    @RabbitListener(
-            bindings = @QueueBinding(
-                    value = @Queue(value = QUEUE_NAME_TRAIL, durable = "true"),
-                    exchange = @Exchange(value = EXCHANGE_NAME_TRAIL, ignoreDeclarationExceptions = "true"),
-                    key = ROUTING_KEY_TRAIL))
-    public void receiveMsg(TrailEntity payload, Channel channel,
-                           @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
-        log.info("GameCenter has received message from trail_allocation_queue: '" + payload + "'");
-        if (payload == null) {
+    @RabbitListener(bindings = @QueueBinding(value = @Queue(value = QUEUE_NAME_TRAIL, durable = "true"), exchange = @Exchange(value = EXCHANGE_NAME_TRAIL, ignoreDeclarationExceptions = "true"), key = ROUTING_KEY_TRAIL))
+    public void receiveMsg(TrailEntity payload, Channel channel, @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
+        if (payload == null || payload.getUserId() == null || payload.getTrailId() == null) {
             return;
         }
+
+        log.info("【Scenario3 - GameCenter】-【GameCenter】receive mq msg from【Trail Center】, userId={},userName={}",
+                payload.getUserId(), payload.getTrailId());
+
+
+        gameCenterService.upsertUserTrailId(payload.getUserId(), payload.getTrailId());
     }
 }
