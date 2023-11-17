@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface TrailFinder {
     List<TrailEntity> findTrails();
-    TrailEntity findTrailById(Long workoutId);
+    TrailEntity findTrailById(Long trailId);
     List<TrailEntity> findTrailByUsername(String username);
 }
