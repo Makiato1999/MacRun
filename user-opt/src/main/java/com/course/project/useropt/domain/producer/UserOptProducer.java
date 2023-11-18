@@ -17,7 +17,7 @@ public class UserOptProducer {
     }
 
     public void sender(Object msg) {
-        log.info("UserOpt has sent message to game_center_queue: '" + msg + "'");
+        //log.info("UserOpt has sent message to game_center_queue: '" + msg + "'");
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME_USER_OPT, RabbitConfiguration.ROUTING_KEY_USER_OPT, msg);
     }
 }
