@@ -1,4 +1,4 @@
-package com.course.project.trailcenter.finders;
+package com.course.project.trailcenter.service;
 
 import com.course.project.trailcenter.business.TrailCenterManager;
 import com.course.project.trailcenter.business.entities.TrailEntity;
