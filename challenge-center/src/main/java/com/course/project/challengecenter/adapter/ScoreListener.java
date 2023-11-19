@@ -4,6 +4,7 @@ import com.course.project.challengecenter.RabbitConfiguration;
 import com.course.project.challengecenter.business.entity.Badges;
 import com.course.project.challengecenter.business.entity.Profile;
 import com.course.project.challengecenter.dto.ScoreReq;
+import com.course.project.challengecenter.port.BadgesService;
 import com.course.project.challengecenter.port.ProfileService;
 import com.rabbitmq.client.Channel;
 import jakarta.annotation.Resource;
@@ -20,24 +21,25 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class ScoreListener {
     @Resource
-    private ProfileService profileService;
+    public ProfileService profileService;
+    @Resource
+    public BadgesService badgesService;
 
     @RabbitListener(
             bindings = @QueueBinding(
                     value = @Queue(value = RabbitConfiguration.QUEUE_NAME_SCORE, durable = "true"),
                     exchange = @Exchange(value = RabbitConfiguration.EXCHANGE_NAME_SCORE, ignoreDeclarationExceptions = "true"),
                     key = RabbitConfiguration.ROUTING_KEY_SCORE))
-    // get other info to generate profile/badges?
     public void receiveMsg(ScoreReq payload, Channel channel,
                            @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
-        log.info("receive message: '" + payload + "'");
+        log.info("Scenario501:[Game Center] --> [Challenge Center] Receive:'" + payload + "'");
         if (payload == null) {
             return;
         }
 
 
-        Badges badges = profileService.genereateBadges(payload);
-        Profile profile = profileService.genereateProfile(payload);
+        Badges badges = badgesService.generateBadges(payload);
+        Profile profile = profileService.generateProfile(payload);
         log.info("Congratulations, you get this new badges: '" + badges + "'");
         log.info("Profile: '" + profile + "'");
 
