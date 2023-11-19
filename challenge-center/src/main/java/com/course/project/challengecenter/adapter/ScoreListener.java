@@ -32,7 +32,7 @@ public class ScoreListener {
                     key = RabbitConfiguration.ROUTING_KEY_SCORE))
     public void receiveMsg(ScoreReq payload, Channel channel,
                            @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
-        log.info("receive message: '" + payload + "'");
+        log.info("Scenario501:[Game Center] --> [Challenge Center] Receive:'" + payload + "'");
         if (payload == null) {
             return;
         }
