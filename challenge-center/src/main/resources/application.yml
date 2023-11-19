@@ -2,7 +2,7 @@ server:
   port: 9090
 spring:
   application:
-    name: listener-service
+    name: challenge-center
   rabbitmq:
     port: 5672
     host: 127.0.0.1
