@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Builder
@@ -15,7 +15,6 @@ public class Profile {
 
     private Long userId;
     private Integer highestScore;
-    private ArrayList<Badges> badges;
-
+    private List<Badges> badges;
 
 }

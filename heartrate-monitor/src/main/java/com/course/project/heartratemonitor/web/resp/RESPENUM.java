@@ -7,8 +7,8 @@ public enum RESPENUM {
 
     INTERNAL_ERR(500, "internal err"),
     ;
-    private Integer code;
-    private String desc;
+    private final Integer code;
+    private final String desc;
 
     RESPENUM(Integer code, String desc) {
         this.code = code;

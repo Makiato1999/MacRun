@@ -1,7 +1,5 @@
 package com.course.project.heartratemonitor.web;
 
-//import com.course.project.macrunyi_xiaoran_xue.domain.event.producer.TestProducer;
-//import com.course.project.macrunyi_xiaoran_xue.web.resp.Response;
 
 import com.course.project.heartratemonitor.web.resp.Response;
 import jakarta.annotation.Resource;
