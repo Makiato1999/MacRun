@@ -5,6 +5,7 @@ import com.course.project.trailcenter.business.entities.TrailEntity;
 import com.course.project.trailcenter.dto.CreateTrailRequest;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -37,4 +38,12 @@ public class TrailCenterController {
         return new Response().success("send success");
     }
     */
+    @Value("${server.instance.id}")
+    String instanceId;
+
+    @GetMapping("/hello")
+    public String hello() {
+        return String.format("Hello from instance %s", instanceId);
+    }
+
 }

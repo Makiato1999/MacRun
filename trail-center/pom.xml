@@ -122,6 +122,12 @@
             <artifactId>spring-cloud-netflix-eureka-client</artifactId>
         </dependency>
 
+        <!--load balance-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-gateway</artifactId>
+        </dependency>
+
     </dependencies>
 
     <dependencyManagement>
