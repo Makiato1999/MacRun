@@ -59,19 +59,19 @@ services:
       - eureka
       - rabbit-mq
 
-#  user-opt:
-#    container_name: user
-#    build: ../user-opt
-#    image: cynthialiu0805/user-opt
-#    environment:
-#      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka
-#      - spring.rabbitmq.host=rabbit-mq
-#    #      - spring.rabbitmq.virtual-host=/
-#    ports:
-#      - "8090:8090"
-#    depends_on:
-#      - eureka
-#      - rabbit-mq
+  user-opt:
+    container_name: user
+    build: ../user-opt
+    image: cynthialiu0805/user-opt
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka
+      - spring.rabbitmq.host=rabbit-mq
+    #      - spring.rabbitmq.virtual-host=/
+    ports:
+      - "8090:8090"
+    depends_on:
+      - eureka
+      - rabbit-mq
 
 
   eureka:
