@@ -122,11 +122,17 @@
             <artifactId>spring-cloud-netflix-eureka-client</artifactId>
         </dependency>
 
-        <!--load balance-->
+        <!--load balance
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-gateway</artifactId>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        -->
 
     </dependencies>
 

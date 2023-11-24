@@ -31,13 +31,7 @@ public class TrailCenterController {
         return manager.allocate(req.getUserId(), req.getLongitude(), req.getLatitude());
     }
 
-    /*
-    @GetMapping(ENDPOINT + "/allocation")
-    public Response findTrail(@RequestParam(required = true) String content) {
-        trailSender.sender(content);
-        return new Response().success("send success");
-    }
-    */
+    /* temp ignore the loadbalance
     @Value("${server.instance.id}")
     String instanceId;
 
@@ -45,5 +39,6 @@ public class TrailCenterController {
     public String hello() {
         return String.format("Hello from instance %s", instanceId);
     }
+     */
 
 }

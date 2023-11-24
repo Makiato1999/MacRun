@@ -4,11 +4,13 @@ import com.course.project.trailcenter.TrailCenterApplication;
 import com.course.project.trailcenter.port.TrailCenterService;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.netflix.discovery.EurekaClient;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -40,6 +42,9 @@ public class TrailCenterRestControllerIntegrationTest {
     private String req_longitude;
     private String req_latitude;
     private Random random = new Random();
+
+    @MockBean
+    private EurekaClient eurekaClient;
 
     @Test
     public void testTrailAllocation_whenPostUserEntity_thenStatus200()
