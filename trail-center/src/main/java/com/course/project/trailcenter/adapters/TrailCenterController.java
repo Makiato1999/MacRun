@@ -5,6 +5,7 @@ import com.course.project.trailcenter.business.entities.TrailEntity;
 import com.course.project.trailcenter.dto.CreateTrailRequest;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -30,11 +31,14 @@ public class TrailCenterController {
         return manager.allocate(req.getUserId(), req.getLongitude(), req.getLatitude());
     }
 
-    /*
-    @GetMapping(ENDPOINT + "/allocation")
-    public Response findTrail(@RequestParam(required = true) String content) {
-        trailSender.sender(content);
-        return new Response().success("send success");
+    /* temp ignore the loadbalance
+    @Value("${server.instance.id}")
+    String instanceId;
+
+    @GetMapping("/hello")
+    public String hello() {
+        return String.format("Hello from instance %s", instanceId);
     }
-    */
+     */
+
 }

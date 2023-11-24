@@ -37,9 +37,9 @@
 8. Go to Postman and create GET/Post request with the
    link `http://localhost:8080/user/register?email=user@email.com&userName=user`, you can see the request is successful!
 
-## Run this App
+## App
 1. User Register -> Trail Allocation -> Game Center
-   - start up user-opt service, trail-center service, game-center service
+   - start up user-opt service, trail-center service, game-center service by ```mvn spring-boot:run```
    - send a POST request such as
      ```
      url: http://localhost:8075/user/register
@@ -50,7 +50,7 @@
      }
      ```
 2. User Operation -> Game Center (Attack Decision)
-   - start up user-opt service and game-center service
+   - start up user-opt service and game-center service by ```mvn spring-boot:run```
    - send a POST request such as
      ```
      url: http://localhost:8075/user/opt
@@ -59,3 +59,9 @@
         "optID": "2"
      }
      ```
+3. Eureka service discovery
+   - run eureka server by ```mvn spring-boot:run```
+     - access the web UI by `http://localhost:8761/`
+   - run gateway service by ```mvn spring-boot:run```
+   - run service by ```mvn spring-boot:run```
+      - open a new terminal and create another instance by ```mvn spring-boot:run -Dspring-boot.run.arguments="--server.port=9091 --server.instance.id=2"```
