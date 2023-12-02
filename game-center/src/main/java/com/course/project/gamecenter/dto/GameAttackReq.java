@@ -14,5 +14,5 @@ public class GameAttackReq {
     private Long userId;
     private Long longitude;
     private Long latitude;
-    private Integer heartRateCnt;
+    private Integer heartRate;
 }

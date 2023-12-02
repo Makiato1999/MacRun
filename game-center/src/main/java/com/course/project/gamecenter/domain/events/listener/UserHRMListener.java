@@ -37,7 +37,7 @@ public class UserHRMListener {
         }
 
         log.info("【Scenario302 - GameCenter】-【GameCenter】receive mq msg from【HRM】, userId={},heartRate={}",
-                payload.getUserId(), payload.getHeartRateCnt());
+                payload.getUserId(), payload.getHeartRate());
 
         gameCenterService.generateAttackMode(payload);
     }

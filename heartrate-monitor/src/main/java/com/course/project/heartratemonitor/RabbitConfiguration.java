@@ -2,10 +2,14 @@ package com.course.project.heartratemonitor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.springframework.amqp.rabbit.annotation.EnableRabbit;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 
+@Configuration
+@EnableRabbit
 public class RabbitConfiguration {
 
     public static final String QUEUE_NAME = "user_hrm_queue";

@@ -137,7 +137,7 @@ public class GameCenterManager implements GameCenterService {
         if (userTrailDAO.containUserTrail(userId)) {
             return userTrailDAO.getTrailIdByUserId(userId);
         }
-        return null;
+        return 123;
     }
 
     private AttackEnum getAttachEnumByModeId(Long userId, Long longitude, Long latitude) {

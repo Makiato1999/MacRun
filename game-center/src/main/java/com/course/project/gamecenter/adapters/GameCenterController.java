@@ -7,9 +7,7 @@ import com.course.project.gamecenter.port.GameCenterService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("gameCenter")
@@ -20,18 +18,20 @@ public class GameCenterController {
     private GameCenterService gameCenterService;
 
 
-    @RequestMapping(value = "register", consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response<GamePlayEntity> userReact(@RequestParam(required = true) Long userId,
-                                              @RequestParam Integer attackId) {
+    @RequestMapping(value = "play", method = RequestMethod.POST,
+            consumes = MediaType.ALL_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Response<GamePlayEntity> userReact(@RequestBody GamePlayReq gamePlayEntity) {
 
-        log.info("【Scenario303 - GameCenter】-【GameCenter】User start play, userId={},attackId={}",
-                userId, attackId);
+        log.info("【Scenario303 - GameCenter】-【GameCenter】User start play, userId={},attackId={}", gamePlayEntity.getUserId(), gamePlayEntity.getAttackId());
 
         GamePlayReq gamePlayReq = GamePlayReq.builder()
-                .userId(userId)
-                .attackId(attackId)
+                .userId(gamePlayEntity.getUserId())
+                .attackId(gamePlayEntity.getAttackId())
                 .build();
-        GamePlayEntity gamePlayEntity = gameCenterService.play(gamePlayReq);
-        return Response.success(gamePlayEntity);
+        GamePlayEntity res = gameCenterService.play(gamePlayReq);
+        return Response.success(res);
     }
+
+
 }
