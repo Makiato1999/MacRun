@@ -32,16 +32,20 @@ public class ScoreListener {
                     key = RabbitConfiguration.ROUTING_KEY_SCORE))
     public void receiveMsg(ScoreReq payload, Channel channel,
                            @Header(AmqpHeaders.DELIVERY_TAG) long tag) {
-        log.info("Scenario501:[Game Center] --> [Challenge Center] Receive:'" + payload + "'");
+//        "update user and trailId relation to db, userId={},trailId={},", userId, trailId)
         if (payload == null) {
             return;
         }
+        log.info("【Scenario501 - Challenge Center】-【Challenge Center】Receive message from 【Game Center】. Receive userId = {},trailId = {}", payload.getUserId(), payload.getScore());
+
 
 
         Badges badges = badgesService.generateBadges(payload);
         Profile profile = profileService.generateProfile(payload);
-        log.info("Congratulations, you get this new badges: '" + badges + "'");
-        log.info("Profile: '" + profile + "'");
+        if (badges != null) {
+            log.info("Congratulations, user {}, you get the {} at {}", badges.getUserId(), badges.getName(), badges.getCreateDate());
+        }
+        log.info("Profile: user = {}, highest score = {}, badges = {}", profile.getUserId(), profile.getHighestScore(), profile.getBadges());
 
 
     }

@@ -16,7 +16,7 @@ public class GameAttackReqTest {
         assertNull(request.getUserId());
         assertNull(request.getLongitude());
         assertNull(request.getLatitude());
-        assertNull(request.getHeartRateCnt());
+        assertNull(request.getHeartRate());
     }
 
     @Test
@@ -26,7 +26,7 @@ public class GameAttackReqTest {
         assertEquals(Long.valueOf(1L), request.getUserId());
         assertEquals(Long.valueOf(100L), request.getLongitude());
         assertEquals(Long.valueOf(200L), request.getLatitude());
-        assertEquals(Integer.valueOf(80), request.getHeartRateCnt());
+        assertEquals(Integer.valueOf(80), request.getHeartRate());
     }
 
     @Test
@@ -35,13 +35,13 @@ public class GameAttackReqTest {
                 .userId(1L)
                 .longitude(100L)
                 .latitude(200L)
-                .heartRateCnt(80)
+                .heartRate(80)
                 .build();
 
         assertEquals(Long.valueOf(1L), request.getUserId());
         assertEquals(Long.valueOf(100L), request.getLongitude());
         assertEquals(Long.valueOf(200L), request.getLatitude());
-        assertEquals(Integer.valueOf(80), request.getHeartRateCnt());
+        assertEquals(Integer.valueOf(80), request.getHeartRate());
     }
 
     @Test
@@ -50,12 +50,12 @@ public class GameAttackReqTest {
         request.setUserId(1L);
         request.setLongitude(100L);
         request.setLatitude(200L);
-        request.setHeartRateCnt(80);
+        request.setHeartRate(80);
 
         assertEquals(Long.valueOf(1L), request.getUserId());
         assertEquals(Long.valueOf(100L), request.getLongitude());
         assertEquals(Long.valueOf(200L), request.getLatitude());
-        assertEquals(Integer.valueOf(80), request.getHeartRateCnt());
+        assertEquals(Integer.valueOf(80), request.getHeartRate());
     }
 
 }
