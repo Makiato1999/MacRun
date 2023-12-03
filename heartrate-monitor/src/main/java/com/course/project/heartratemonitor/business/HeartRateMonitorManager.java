@@ -26,13 +26,13 @@ public class HeartRateMonitorManager {
         this.heartrateRecord = biometricService.createHeartrateRecord(new Random().nextLong());
     }
 
-    @Scheduled(fixedRate=1000) // https://stackoverflow.com/a/36542208
+    @Scheduled(fixedRate=10000) // https://stackoverflow.com/a/36542208
     public void sendData() {
         Integer heartRate = generateNextHeartrate();
         Random random = new Random();
         Long latitude = -90 + (90 - (-90)) * random.nextLong();
         Long longitude = -180 + (180 - (-180)) * random.nextLong();
-        log.info("Scenario401:[HRM] --> [Game Center]Sending heartrate: " + heartRate + "bpm");
+        log.info("【Scenario401 - Heartrate Monitor】- 【Heartrate Monitor】sending heartrate to 【Game Center】: " + heartRate + "bpm");
         biometricService.sendHeartrate(new Random().nextLong(), latitude, longitude, heartRate);
     }
 

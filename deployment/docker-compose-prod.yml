@@ -5,13 +5,13 @@ services:
 #    build: ../challenge-center
     image: cynthialiu0805/challenge-center
     environment:
-      #      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka
+      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka
       - spring.rabbitmq.host=rabbit-mq
     #      - spring.rabbitmq.virtual-host=/
     ports:
       - "9090:9090"
     depends_on:
-      #      - eureka
+      - eureka
       - rabbit-mq
 
   game-center:
@@ -27,13 +27,15 @@ services:
     depends_on:
       - eureka
       - rabbit-mq
+      - user-opt
+      - trail-center
 
   heartrate-monitor:
     container_name: heartrate
 #    build: ../heartrate-monitor
     image: cynthialiu0805/heartrate-monitor
     environment:
-      #      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka
+      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka
       - spring.rabbitmq.host=rabbit-mq
     #      - spring.rabbitmq.virtual-host=/
     ports:
