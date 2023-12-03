@@ -30,7 +30,7 @@ public class UserController {
     @PostMapping(ENDPOINT + "/register")
     public UserEntity createUserCrud(@RequestBody UserCrudRequest req) {
 
-        log.info("【Scenario1 - User_Register】-【User Center】user action - register, userName={}", req.getUserName());
+        log.info("【Scenario1 - UserRegister】-【UserCenter】user action - register, userName={}", req.getUserName());
 
         UserEntity user = UserEntity.builder().email(req.getEmail()).userName(req.getUserName()).build();
         UserEntity userEntity = userCrudManager.register(user);

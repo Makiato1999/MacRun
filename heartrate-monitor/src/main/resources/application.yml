@@ -10,15 +10,16 @@ spring:
     host: 127.0.0.1
     username: guest
     password: guest
+    virtual-host: vhost
 
   jackson:
     serialization:
       write_dates_as_timestamps: false
 
 
-eureka:
-  client:
-    registerWithEureka: true
-    fetchRegistry: true
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+#eureka:
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serviceUrl:
+#      defaultZone: http://localhost:${server.port}/eureka/

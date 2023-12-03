@@ -23,7 +23,7 @@ public class UserCrudManager implements UserCrudService {
             return null;
         }
 
-        log.info("【Scenario101 - User_Register】-【User Center】user register msg sent to mq (Destination: 【Trail Center】), userId={},userName={}", res.getUserId(), res.getUserName());
+        log.info("【Scenario101 - UserRegister】-【UserCenter】user register msg sent to mq (Destination: 【TrailCenter】), userId={},userName={}", res.getUserId(), res.getUserName());
         // send mq to queue
         userRegisterProducer.sender(res);
         return res;

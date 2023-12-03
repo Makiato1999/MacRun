@@ -18,7 +18,7 @@ public class UserOptManager implements UserOptService {
     public UserOptEntity operate(Integer optID) {
         UserOptEntity res = optPolicy(optID);
 
-        log.info("【Scenario102 - User_Operation】-【User Center】user operation msg sent to mq (Destination: 【Game Center】), userOptId={}", res);
+        log.info("【Scenario102 - UserOperation】-【UserCenter】user operation msg sent to mq (Destination: 【GameCenter】), userOptId={}", res);
         // send mq to queue
         userOptProducer.sender(res);
         return res;

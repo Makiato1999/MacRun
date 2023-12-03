@@ -108,7 +108,7 @@ public class GameCenterManager implements GameCenterService {
             log.info("【Scenario302 - GameCenter】-【GameCenter】send mq to user device and display in it, userId={},playMode={}",
                     userId, attackEnum.getDesc());
 
-            playModeUIProduce.sender(gameAttackEntity);
+//            playModeUIProduce.sender(gameAttackEntity);
         }
 
         return gameAttackEntity;

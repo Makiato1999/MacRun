@@ -1,6 +1,7 @@
 package com.course.project.heartratemonitor;
 import com.course.project.heartratemonitor.adapter.BiometricClient;
 import com.course.project.heartratemonitor.business.entities.HeartrateRecord;
+import com.netflix.discovery.EurekaClient;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeAll;
 import org.mockito.InjectMocks;

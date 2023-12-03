@@ -32,7 +32,7 @@ public class HeartRateMonitorManager {
         Random random = new Random();
         Long latitude = -90 + (90 - (-90)) * random.nextLong();
         Long longitude = -180 + (180 - (-180)) * random.nextLong();
-        log.info("【Scenario401 - Heartrate Monitor】- 【Heartrate Monitor】sending heartrate to 【Game Center】: " + heartRate + "bpm");
+        log.info("【Scenario401 - HRM】-【HRM】sending heart rate to 【GameCenter】: " + heartRate + "bpm");
         biometricService.sendHeartrate(new Random().nextLong(), latitude, longitude, heartRate);
     }
 
