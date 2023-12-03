@@ -18,7 +18,7 @@ import java.util.Random;
 @Service
 public class HeartrateMonitorClient {
     private final RabbitTemplate rabbitTemplate;
-    private static final String ENDPOINT = "/hrm";
+    private static final String ENDPOINT = "v1/heartrate";
     private static final String APP_NAME = "game-center";
 
     private final EurekaClient registry;

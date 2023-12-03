@@ -29,7 +29,8 @@
         <module>trail-center</module>
 <!--        <module>user-opt</module>-->
         <module>challenge-center</module>
-<!--        <module>gateway-tech</module>-->
+        <module>gateway-tech</module>
+        <!--        <module>gateway-tech</module>-->
     </modules>
 
 
