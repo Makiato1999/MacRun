@@ -1,5 +1,6 @@
 server:
-port: 8082
+  port: 8082
+  simulatehrm: true
 spring:
   main:
     web-application-type: reactive
@@ -15,11 +16,3 @@ spring:
   jackson:
     serialization:
       write_dates_as_timestamps: false
-
-
-#eureka:
-#  client:
-#    registerWithEureka: true
-#    fetchRegistry: true
-#    serviceUrl:
-#      defaultZone: http://localhost:${server.port}/eureka/
