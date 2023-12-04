@@ -51,20 +51,20 @@ public class HeartRateMonitorManager {
             Random random = new Random();
             Long latitude = -90 + (90 - (-90)) * random.nextLong();
             Long longitude = -180 + (180 - (-180)) * random.nextLong();
-            log.info("Scenario401:[HRM] --> [Game Center]Sending heartrate: " + heartRate + "bpm");
+            log.info("【Scenario401 - HRM】-【HRM】sending heart rate to 【GameCenter】: " + heartRate + "bpm");
             biometricService.sendHeartrate(value.getUserID(), latitude, longitude, heartRate);
         });
     }
     /**
      * this is auto-send, which is same as previous Yingxue's code
      */
-    @Scheduled(fixedRate=1000) // https://stackoverflow.com/a/36542208
+    @Scheduled(fixedRate=10000) // https://stackoverflow.com/a/36542208
     public void sendData() {
         Integer heartRate = generateNextHeartrate();
         Random random = new Random();
         Long latitude = -90 + (90 - (-90)) * random.nextLong();
         Long longitude = -180 + (180 - (-180)) * random.nextLong();
-        log.info("Scenario401:[HRM] --> [Game Center]Sending heartrate: " + heartRate + "bpm");
+        log.info("【Scenario401 - HRM】-【HRM】sending heart rate to 【GameCenter】: " + heartRate + "bpm");
         biometricService.sendHeartrate(workout.getUserID(), latitude, longitude, heartRate);
     }
 

@@ -18,6 +18,9 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Objects;
 import java.util.Random;
+import com.netflix.appinfo.InstanceInfo;
+import com.netflix.discovery.EurekaClient;
+import com.netflix.discovery.shared.Application;
 
 @Slf4j
 @Service

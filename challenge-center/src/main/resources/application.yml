@@ -8,3 +8,11 @@ spring:
     host: 127.0.0.1
     username: guest
     password: guest
+#    virtual-host: vhost
+
+#eureka:
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serviceUrl:
+#      defaultZone: http://localhost:${server.port}/eureka/

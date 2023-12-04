@@ -36,7 +36,7 @@ public class ScoreListener {
         if (payload == null) {
             return;
         }
-        log.info("【Scenario501 - Challenge Center】-【Challenge Center】Receive message from 【Game Center】. Receive userId = {},trailId = {}", payload.getUserId(), payload.getScore());
+        log.info("【Scenario501 - ChallengeCenter】-【ChallengeCenter】Receive message from【GameCenter】. Receive userId = {},trailId = {}", payload.getUserId(), payload.getScore());
 
 
 
