@@ -19,7 +19,15 @@ spring:
         - 10.0
     gateway:
       routes:
+        - id: user-opt
+          uri: lb://user-opt
+          predicates:
+            - Path=/user/**
+        - id: trail-center
+          uri: lb://trail-center
+          predicates:
+            - Path=/trail/**
         - id: heartrate-monitor-service
           uri: lb://heartrate-monitor-service
           predicates:
-            - Path=/hrm/v1**
+            - Path=/hrm/**

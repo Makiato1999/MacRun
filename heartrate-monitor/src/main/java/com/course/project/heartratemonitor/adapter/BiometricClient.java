@@ -19,14 +19,11 @@ import org.springframework.web.reactive.function.client.WebClient;
 import java.util.Objects;
 import java.util.Random;
 
-import com.netflix.discovery.EurekaClient;
-
 @Slf4j
 @Service
 public class BiometricClient implements BiometricService {
     private final RabbitTemplate rabbitTemplate;
-    private static final String APP_NAME = "game-center";
-    private static final String ENDPOINT = "v1/heartrate";
+    private static final String APP_NAME = "heartrate-monitor-service";
     private final EurekaClient registry;
 
     public BiometricClient(RabbitTemplate rabbitTemplate) {
@@ -61,8 +58,8 @@ public class BiometricClient implements BiometricService {
     }
 
     @Override
-    public void sendHeartrate(Long workoutId, Long Longitude, Long Latitude, Integer heartrate) {
-        HeartrateRecord heartrateRecord = new HeartrateRecord(workoutId, Longitude, Latitude, heartrate);
+    public void sendHeartrate(Long userID, Long Longitude, Long Latitude, Integer heartrate) {
+        HeartrateRecord heartrateRecord = new HeartrateRecord(userID, Longitude, Latitude, heartrate);
         rabbitTemplate.convertAndSend(RabbitConfiguration.EXCHANGE_NAME,
                 RabbitConfiguration.ROUTING_KEY, heartrateRecord);
     }
@@ -75,7 +72,5 @@ public class BiometricClient implements BiometricService {
 
         return new HeartrateRecord(userID, randomLat, randomLong, 80);
     }
-
-
 }
 
