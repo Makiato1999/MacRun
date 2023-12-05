@@ -58,7 +58,7 @@ public class TrailCenterRestControllerIntegrationTest {
                 + "\"latitude\": \"" + req_latitude + "\""
                 + "}";
 
-        service.allocate(req_userId, req_longitude, req_latitude);
+        service.setTrailAllocation(req_userId, req_longitude, req_latitude);
 
         MvcResult result = mvc.perform(post("/trail/allocation")
                         .contentType(MediaType.APPLICATION_JSON)

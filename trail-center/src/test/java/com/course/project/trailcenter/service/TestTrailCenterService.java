@@ -54,13 +54,13 @@ public class TestTrailCenterService {
         }
         trailEntity = new TrailEntity(userId, trailId, trailName, trailMap);
 
-        Mockito.when(trailCenterService.allocate(userId, longitude, latitude)).
+        Mockito.when(trailCenterService.setTrailAllocation(userId, longitude, latitude)).
                 thenReturn(trailEntity);
     }
 
     @Test
     public void testTrailAllocation_returnsCorrectTrailAllocation() {
-        TrailEntity trail = trailCenterService.allocate(userId, longitude, latitude);
+        TrailEntity trail = trailCenterService.setTrailAllocation(userId, longitude, latitude);
 
         assertEquals(trail.getUserId(), userId);
         assertEquals(trail.getTrailId(), trailId);

@@ -46,6 +46,10 @@ public class GameCenterManager implements GameCenterService {
         Long userId = req.getUserId();
         Integer attackId = req.getAttackId();
         Integer heartRate = userDataDAO.getUserHearRate(userId);
+        // since heartrate can't be null, so set a default value to avoid throwing null exception
+        if (heartRate == null) {
+            heartRate = 100;
+        }
 
         GameAttackDataReq gameAttackDataReq = GameAttackDataReq.builder()
                 .userId(userId)

@@ -20,7 +20,32 @@ public class TrailCenterManager implements TrailCenterService {
     private TrailRepository trailRepository;
 
     @Override
-    public TrailEntity allocate(Long userId, String longitude, String latitude) {
+    public TrailEntity findTrailAllocation(Long userId) {
+        String longitude = generateRandomCoordinates()[0];
+        String latitude = generateRandomCoordinates()[1];
+
+        TrailEntity trail = allocatePolicy(longitude, latitude);
+        trail.setUserId(userId);
+        /*
+        log.info("【Scenario201 - TrailCenter】-【TrailCenter】allocate trail, userId={},trailId={},trailName={}",
+                userId, trail.getTrailId(), trail.getTrailName());
+
+        trailRepository.addNewTrail(userId, trail.getTrailId(), trail.getTrailName(), trail.getTrailMap());
+
+        log.info("【Scenario201 - TrailCenter】-【TrailCenter】send trail msg to【GameCenter】, userId={},trailId={},trailName={}",
+                userId, trail.getTrailId(), trail.getTrailName());
+
+        trail.setUserId(userId);
+
+        // send mq to queue
+        trailCenterProducer.sender(trail);
+
+         */
+
+        return trail;
+    }
+    @Override
+    public TrailEntity setTrailAllocation(Long userId, String longitude, String latitude) {
         TrailEntity trail = allocatePolicy(longitude, latitude);
         log.info("【Scenario201 - TrailCenter】-【TrailCenter】allocate trail, userId={},trailId={},trailName={}",
                 userId, trail.getTrailId(), trail.getTrailName());
@@ -57,5 +82,21 @@ public class TrailCenterManager implements TrailCenterService {
                 .trailName(trailName)
                 .trailMap(trailMap)
                 .build();
+    }
+
+    private String[] generateRandomCoordinates() {
+        Random random = new Random();
+
+        // Latitude ranges from -90 to 90
+        double latitude = -90 + random.nextDouble() * 180;
+
+        // Longitude ranges from -180 to 180
+        double longitude = -180 + random.nextDouble() * 360;
+
+        // Formatting to strings with 6 decimal places
+        String latitudeStr = String.format("%.6f", latitude);
+        String longitudeStr = String.format("%.6f", longitude);
+
+        return new String[] {latitudeStr, longitudeStr};
     }
 }

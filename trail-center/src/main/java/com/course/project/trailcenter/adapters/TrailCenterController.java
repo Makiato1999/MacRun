@@ -21,24 +21,15 @@ public class TrailCenterController {
         this.manager = manager;
     }
 
-    @GetMapping(ENDPOINT)
-    public String defaultPage() {
-        return "TrailCenter server starts successfully";
+    @GetMapping(ENDPOINT + "/details")
+    public TrailEntity findTrail(@RequestParam("userID") Long userId) {
+        return manager.findTrailAllocation(userId);
     }
 
-    @PostMapping(ENDPOINT + "/allocation")
-    public TrailEntity findTrail(@RequestBody CreateTrailRequest req) {
-        return manager.allocate(req.getUserId(), req.getLongitude(), req.getLatitude());
+    // provide customized geographic information to users
+    @PostMapping(ENDPOINT + "/localization")
+    public TrailEntity setTrail(@RequestBody CreateTrailRequest req) {
+        return manager.setTrailAllocation(req.getUserId(), req.getLongitude(), req.getLatitude());
     }
-
-    /* temp ignore the loadbalance
-    @Value("${server.instance.id}")
-    String instanceId;
-
-    @GetMapping("/hello")
-    public String hello() {
-        return String.format("Hello from instance %s", instanceId);
-    }
-     */
 
 }

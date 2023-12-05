@@ -34,6 +34,6 @@ public class TrailCenterListener {
         log.info("【Scenario2 - TrailCenter】-【TrailCenter】receive mq msg from【UserCenter】, userId={},userName={}",
                 payload.getUserId(), payload.getUserName());
 
-        trailCenterManager.allocate(payload.getUserId(), payload.getLongitude(), payload.getLatitude());
+        trailCenterManager.setTrailAllocation(payload.getUserId(), payload.getLongitude(), payload.getLatitude());
     }
 }
