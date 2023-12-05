@@ -3,6 +3,7 @@ package com.course.project.heartratemonitor.adapter;
 
 import com.course.project.heartratemonitor.RabbitConfiguration;
 import com.course.project.heartratemonitor.business.entities.HeartrateRecord;
+import com.course.project.heartratemonitor.business.entities.Workout;
 import com.course.project.heartratemonitor.ports.BiometricService;
 import com.netflix.appinfo.InstanceInfo;
 import com.netflix.discovery.EurekaClient;

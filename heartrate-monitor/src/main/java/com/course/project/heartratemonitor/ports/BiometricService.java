@@ -1,5 +1,6 @@
 package com.course.project.heartratemonitor.ports;
 import com.course.project.heartratemonitor.business.entities.HeartrateRecord;
+import com.course.project.heartratemonitor.business.entities.Workout;
 
 
 public interface BiometricService {

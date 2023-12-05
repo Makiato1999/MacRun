@@ -31,3 +31,7 @@ spring:
           uri: lb://heartrate-monitor-service
           predicates:
             - Path=/hrm/**
+        - id: game-center
+          uri: lb://game-center
+          predicates:
+            - Path=/game/**

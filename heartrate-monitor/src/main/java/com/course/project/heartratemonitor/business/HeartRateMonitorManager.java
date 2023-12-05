@@ -2,12 +2,14 @@ package com.course.project.heartratemonitor.business;
 import com.course.project.heartratemonitor.business.entities.HeartrateRecord;
 import com.course.project.heartratemonitor.business.entities.Workout;
 import com.course.project.heartratemonitor.ports.BiometricService;
+import lombok.Value;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -44,7 +46,7 @@ public class HeartRateMonitorManager {
     /**
      * this is sync-send, which is modified by Xiaoran
      */
-    @Scheduled(fixedRate=1000) // https://stackoverflow.com/a/36542208
+    @Scheduled(fixedRate=10000) // https://stackoverflow.com/a/36542208
     public void sendDataSync() {
         activeWorkouts.forEach((key, value) -> {
             Integer heartRate = generateNextHeartrate();
@@ -96,6 +98,18 @@ public class HeartRateMonitorManager {
         workout = new Workout(workoutID, userID, LocalDateTime.now());
         activeWorkouts.put(userID, workout);
         return workout;
+    }
+    public Workout getWorkout(Long userID) {
+        Workout res = new Workout(null, null, LocalDateTime.now());
+        Workout value = activeWorkouts.get(userID);
+        if (value != null) {
+            res.setUserID(value.getUserID());
+            res.setWorkoutId(value.getWorkoutId());
+            res.setStartTime(value.getStartTime());
+        } else {
+            throw new NoSuchElementException("No workout found for userID: " + userID);
+        }
+        return res;
     }
     /*
     public void endWorkout(Long userID) {
