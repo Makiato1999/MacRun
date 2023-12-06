@@ -69,7 +69,7 @@ public class UserOptRestControllerIntegrationTest {
         userEntity.setUserName(req_userName);
         userCrudService.register(userEntity);
 
-        MvcResult result = mvc.perform(post("/user/register")
+        MvcResult result = mvc.perform(post("/user/starter")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(jsonRequestBody))
                 .andExpect(status().isOk())
