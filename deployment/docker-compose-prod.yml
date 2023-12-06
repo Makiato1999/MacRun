@@ -73,6 +73,19 @@ services:
       - eureka
       - rabbit-mq
 
+  gateway-tech:
+    container_name: gateway
+#    build: ../gateway-tech
+    image: cynthialiu0805/gateway-tech
+    environment:
+      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka
+      - spring.rabbitmq.host=rabbit-mq
+    #      - spring.rabbitmq.virtual-host=/
+    ports:
+      - "8762:8762"
+    depends_on:
+      - eureka
+      - rabbit-mq
 
   eureka:
     container_name: eureka
